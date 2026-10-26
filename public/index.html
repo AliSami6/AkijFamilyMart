@@ -21,6 +21,316 @@
     body.lang-bn {
       font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
     }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-badge {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+        }
+
+    /* Responsive fixes */
+    *, *::before, *::after { box-sizing: border-box; }
+    body { overflow-x: hidden; }
+    .swiper-button-prev::after,
+    .swiper-button-next::after { content: none !important; display: none !important; }
+    .recommendedSwiper { min-width: 0; }
+    .recommendedSwiper .swiper-slide { height: auto; }
+    .recommendedSwiper img { display: block; }
+    @media (max-width: 767px) {
+      header .max-w-7xl { row-gap: .75rem; }
+      main { min-width: 0; }
+      aside, aside > div, aside nav { width: 100%; min-width: 0; }
+      aside > div { position: static; }
+      .recommendedSwiper { padding-left: 2px; padding-right: 2px; }
+      .recommendedSwiper + .swiper-button-prev { left: 0; }
+      .recommendedSwiper + .swiper-button-next { right: 0; }
+      #countdown-timer { white-space: nowrap; }
+    }
+.swiper-button-next, .swiper-button-prev {
+    width:27px;
+    height:28px;
+    color: #0f2c59;
+}
+
+/* ===========================
+   WEEKEND DEALS
+=========================== */
+
+#weekend-deals {
+    min-width: 0;
+}
+
+#weekend-deals .weekend-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    transition: all .2s ease;
+}
+
+#weekend-deals .weekend-tab:hover {
+    background: #f3f4f6;
+}
+
+#weekend-deals .weekend-tab.active {
+    color: #fff;
+    background: #0f2c59;
+    border-color: #0f2c59;
+    box-shadow: 0 2px 6px rgba(15, 44, 89, .15);
+}
+
+.weekend-slider-wrapper {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    padding: 0 2px;
+}
+
+#weekend-deals .weekend-slider {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 12px 2px 16px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+#weekend-deals .weekend-slider::-webkit-scrollbar {
+    display: none;
+}
+
+#weekend-deals .weekend-card {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 230px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 230px;
+    min-width: 0;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    scroll-snap-align: start;
+    transition: box-shadow .2s ease, transform .2s ease;
+}
+
+#weekend-deals .weekend-card:hover {
+    box-shadow: 0 8px 24px rgba(15, 23, 42, .10);
+    transform: translateY(-2px);
+}
+
+#weekend-deals .weekend-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 145px;
+    margin-bottom: 12px;
+    padding: 8px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f8fafc;
+}
+
+#weekend-deals .weekend-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#weekend-deals .weekend-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    padding: 4px 7px;
+    border-radius: 5px;
+    color: #fff;
+    background: #0f172a;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+#weekend-deals .weekend-shipping {
+    margin-bottom: 7px;
+    color: #334155;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+#weekend-deals .weekend-shipping i {
+    margin-right: 3px;
+}
+
+#weekend-deals .weekend-product-title {
+    min-height: 40px;
+    margin-bottom: 10px;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#weekend-deals .weekend-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+#weekend-deals .weekend-price strong {
+    color: #0f172a;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+#weekend-deals .weekend-price del {
+    color: #9ca3af;
+    font-size: 11px;
+}
+
+#weekend-deals .weekend-price span {
+    margin-left: auto;
+    color: #64748b;
+    font-size: 10px;
+}
+
+#weekend-deals .weekend-add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 38px;
+    padding: 9px;
+    border: 0;
+    border-radius: 10px;
+    background: #0f2c59;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+#weekend-deals .weekend-add-btn:hover {
+    background: #16417f;
+}
+
+#weekend-deals .weekend-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+    background: #fff;
+    color: #0f2c59;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, .16);
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background .2s, color .2s, opacity .2s;
+}
+
+#weekend-deals .weekend-arrow:hover {
+    background: #0f2c59;
+    color: #fff;
+}
+
+#weekend-deals .weekend-arrow:disabled {
+    opacity: .35;
+    cursor: default;
+}
+
+#weekend-deals .weekend-arrow-left {
+    left: -12px;
+}
+
+#weekend-deals .weekend-arrow-right {
+    right: -12px;
+}
+
+#weekend-deals .weekend-toast {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 50;
+    max-width: calc(100% - 40px);
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: #0f2c59;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all .25s ease;
+    pointer-events: none;
+}
+
+#weekend-deals .weekend-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+    #weekend-deals .weekend-card {
+        flex-basis: 210px;
+        width: 210px;
+    }
+
+    #weekend-deals .weekend-image {
+        height: 130px;
+    }
+
+    #weekend-deals .weekend-arrow {
+        width: 34px;
+        height: 34px;
+    }
+
+    #weekend-deals .weekend-arrow-left {
+        left: -5px;
+    }
+
+    #weekend-deals .weekend-arrow-right {
+        right: -5px;
+    }
+}
+
   </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
@@ -312,13 +622,13 @@
                         Your browser does not support the video tag.
                     </video>
 
-                    <!-- 🌌 Dark Navy Gradient Overlay (For Text Readability & Brand Aesthetic) -->
+                   
                     <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy/60 z-10"></div>
 
-                    <!-- ✨ Decorative Gold Dot Pattern Overlay -->
+                  
                     <div class="absolute right-0 bottom-0 top-0 w-1/2 opacity-20 pointer-events-none bg-[radial-gradient(#C5A880_1px,transparent_1px)] [background-size:16px_16px] z-10"></div>
 
-                    <!-- 📝 Foreground Content -->
+                 
                     <div class="relative z-20 max-w-lg">
                         <span class="text-brand-gold font-semibold text-xs uppercase tracking-widest bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10 inline-block mb-3" data-i18n="premium_quality">
                             Premium Quality Assured
@@ -344,6 +654,9 @@
                     </div>
 
                 </div>
+                
+
+
 
                 <!-- QUICK PROMO CARDS -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5">
@@ -398,171 +711,205 @@
                     </div>
                 </div>
 
-                <!-- Section Header -->
-<div class="max-w-7xl mx-auto px-4 py-6">
-    <div class="text-center mb-6">
-        <h2 class="text-2xl font-bold text-slate-800 tracking-wide uppercase">RECOMMENDED FOR YOU</h2>
-    </div>
-
-    <!-- Swiper Container with Navigation Arrows -->
-    <div class="relative px-12">
-        <div class="swiper recommendedSwiper overflow-hidden py-4">
-            <div class="swiper-wrapper">
-
-                <!-- Product Card 1: Fresh Super Premium Salt -->
-                <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
-                    <!-- Discount Ribbon Badge -->
-                    <div class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-1 rounded shadow-sm text-center leading-tight z-10">
-                        ৳5<br>OFF
-                    </div>
-                    <!-- Most Picked Badge -->
-                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
-
-                    <div>
-                        <!-- Product Image (Boro kora hoyeche: h-48) -->
-                        <div class="w-full h-48 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden relative">
-                            <i class="fa-solid fa-cube text-7xl text-emerald-600/70 group-hover:scale-105 transition duration-300"></i>
-                        </div>
-                        <!-- Delivery Info -->
-                        <p class="text-[11px] text-slate-400 text-center mb-1">Delivery 1-2 ঘণ্টা</p>
-                        <!-- Product Name -->
-                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8">Fresh Super Premium Salt 1kg</h3>
-                        
-                        <!-- Pricing -->
-                        <div class="text-center mt-2">
-                            <span class="text-xs text-slate-400 line-through mr-1 font-normal">৳42</span>
-                            <span class="text-sm font-black text-rose-600">৳37</span>
-                            <span class="text-[11px] text-slate-500 font-medium ml-1">Per Piece</span>
-                        </div>
+ 
+                <div class="max-w-7xl mx-auto px-4 py-6">
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-bold text-slate-800 tracking-wide uppercase">RECOMMENDED FOR YOU</h2>
                     </div>
 
-                    <button onclick="addToBag('Fresh Super Premium Salt')" class="mt-4 w-full py-2 bg-rose-600 hover:bg-rose-700 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
-                        <i class="fa-solid fa-plus text-[10px]"></i>
-                        <span>Add to Bag</span>
-                    </button>
+                    <!-- Swiper Container with Custom Navigation Arrows -->
+                    <div class="relative px-6 md:px-10">
+                        <div class="swiper recommendedSwiper overflow-hidden py-2">
+                            <div class="swiper-wrapper">
+
+                                <!-- Product Card 1: Fresh Super Premium Salt -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <div class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm text-center leading-tight z-10">
+                                        ৳5<br>OFF
+                                    </div>
+                                    <span class="absolute top-2 right-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">
+                                        Most Picked
+                                    </span>
+                                    
+                                    <div>
+                                        <!-- Product Image (h-36 / h-40 balanced for optimal card height) -->
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Fresh-Super-Premium-Salt-1kg.png" class="w-full h-full object-contain p-2" alt="Fresh Super Premium Salt" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Fresh Super Premium Salt 1kg</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-xs text-slate-400 line-through mr-1 font-normal">৳42</span>
+                                            <span class="text-sm font-black text-rose-600">৳37</span>
+                                            <span class="text-[11px] text-slate-500 font-medium ml-1">Per Piece</span>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Fresh Super Premium Salt')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 2: Kacha Morich (Chilli Green) -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Kacha-Morich-Chilli-Green_1.png" class="w-full h-full object-contain p-2" alt="Kacha Morich" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Kacha Morich (Chilli Green)</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳140</span>
+                                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 100gm)</span></span>
+                                            
+                                            <select class="mt-1 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                                                <option>1kg</option>
+                                                <option>500gm</option>
+                                                <option>100gm</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Kacha Morich')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 3: Miniket Rice Loose -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <div class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm text-center leading-tight z-10">
+                                        ৳4<br>OFF
+                                    </div>
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Miniket-Rice-Loose-Premium_1.png" class="w-full h-full object-contain p-2" alt="Miniket Rice" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Miniket Rice Loose(P) (Jirashail) Kg</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-xs text-slate-400 line-through mr-1 font-normal">৳70</span>
+                                            <span class="text-sm font-black text-rose-600">৳66</span>
+                                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 0.50kg)</span></span>
+                                            
+                                            <select class="mt-1 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                                                <option>1kg</option>
+                                                <option>0.50kg</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Miniket Rice')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 4: Sugar Loose Refined Kg -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Sugar-Loose-Refined_1.jpg" class="w-full h-full object-contain p-2" alt="Sugar Loose" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Sugar Loose Refined Kg</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳113</span>
+                                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 250gm)</span></span>
+                                            
+                                            <select class="mt-1 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                                                <option>1kg</option>
+                                                <option>500gm</option>
+                                                <option>250gm</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Sugar Loose')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 5: Egg Loose -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Egg-Loose_1.jpg" class="w-full h-full object-contain p-2" alt="Egg Loose" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Egg Loose</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳12.50</span>
+                                            <span class="text-[11px] text-slate-500 font-medium block">Per Piece</span>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Egg Loose')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 6: Rupchanda Soyabean Oil 5L -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Rupchanda-Soyabean-Oil-5L_1.png" class="w-full h-full object-contain p-2" alt="Rupchanda Oil 5L" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Rupchanda Soyabean Oil 5Ltr</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳1,000</span>
+                                            <span class="text-[11px] text-slate-500 font-medium block">Per Piece</span>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Rupchanda Oil 5L')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <button class="swiper-button-prev absolute -left-3 top-1/2 -translate-y-1/2 z-20 
+                                                        w-9 h-9 bg-amber-400 hover:bg-amber-500 active:scale-95
+                                                        text-slate-900 rounded-full shadow-md 
+                                                        flex items-center justify-center 
+                                                        transition-all duration-200 cursor-pointer
+                                                        border border-amber-500/30 hover:shadow-lg">
+                                            <i class="fa-solid fa-chevron-left text-sm"></i>
+                        </button>
+
+                        <button class="swiper-button-next absolute -right-3 top-1/2 -translate-y-1/2 z-20 
+                                                        w-9 h-9 bg-amber-400 hover:bg-amber-500 active:scale-95
+                                                        text-slate-900 rounded-full shadow-md 
+                                                        flex items-center justify-center 
+                                                        transition-all duration-200 cursor-pointer
+                                                        border border-amber-500/30 hover:shadow-lg">
+                                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                        </button>
+                    </div>
                 </div>
-
-                <!-- Product Card 2: Kacha Morich (Chilli Green) -->
-                <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
-                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
-
-                    <div>
-                        <div class="w-full h-48 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden relative">
-                            <i class="fa-solid fa-pepper-hot text-7xl text-emerald-500 group-hover:scale-105 transition duration-300"></i>
-                        </div>
-                        <p class="text-[11px] text-slate-400 text-center mb-1">Delivery 1-2 ঘণ্টা</p>
-                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8">Kacha Morich (Chilli Green)</h3>
-                        
-                        <div class="text-center mt-2">
-                            <span class="text-sm font-black text-rose-600">৳140</span>
-                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 100gm)</span></span>
-                            
-                            <select class="mt-2 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-1 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
-                                <option>1kg</option>
-                                <option>500gm</option>
-                                <option>100gm</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button onclick="addToBag('Kacha Morich')" class="mt-4 w-full py-2 bg-rose-600 hover:bg-rose-700 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
-                        <i class="fa-solid fa-plus text-[10px]"></i>
-                        <span>Add to Bag</span>
-                    </button>
-                </div>
-
-                <!-- Product Card 3: Miniket Rice Loose -->
-                <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
-                    <div class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-1 rounded shadow-sm text-center leading-tight z-10">
-                        ৳4<br>OFF
-                    </div>
-                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
-
-                    <div>
-                        <div class="w-full h-48 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden relative">
-                            <i class="fa-solid fa-bowl-rice text-7xl text-amber-700/50 group-hover:scale-105 transition duration-300"></i>
-                        </div>
-                        <p class="text-[11px] text-slate-400 text-center mb-1">Delivery 1-2 ঘণ্টা</p>
-                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8">Miniket Rice Loose(P) (Jirashail) Kg</h3>
-                        
-                        <div class="text-center mt-2">
-                            <span class="text-xs text-slate-400 line-through mr-1 font-normal">৳70</span>
-                            <span class="text-sm font-black text-rose-600">৳66</span>
-                            <span class="text-[10px] text-slate-500 font-medium block mt-0.5">Per 1kg <span class="text-slate-400">(Min. 0.50kg)</span></span>
-                            
-                            <select class="mt-2 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-1 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
-                                <option>1kg</option>
-                                <option>0.50kg</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button onclick="addToBag('Miniket Rice')" class="mt-4 w-full py-2 bg-rose-600 hover:bg-rose-700 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
-                        <i class="fa-solid fa-plus text-[10px]"></i>
-                        <span>Add to Bag</span>
-                    </button>
-                </div>
-
-                <!-- Product Card 4: Sugar Loose Refined Kg -->
-                <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
-                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
-
-                    <div>
-                        <div class="w-full h-48 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden relative">
-                            <i class="fa-solid fa-jar text-7xl text-slate-300 group-hover:scale-105 transition duration-300"></i>
-                        </div>
-                        <p class="text-[11px] text-slate-400 text-center mb-1">Delivery 1-2 ঘণ্টা</p>
-                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8">Sugar Loose Refined Kg</h3>
-                        
-                        <div class="text-center mt-2">
-                            <span class="text-sm font-black text-rose-600">৳113</span>
-                            <span class="text-[10px] text-slate-500 font-medium block mt-0.5">Per 1kg <span class="text-slate-400">(Min. 250gm)</span></span>
-                            
-                            <select class="mt-2 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-1 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
-                                <option>1kg</option>
-                                <option>500gm</option>
-                                <option>250gm</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button onclick="addToBag('Sugar Loose')" class="mt-4 w-full py-2 bg-rose-600 hover:bg-rose-700 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
-                        <i class="fa-solid fa-plus text-[10px]"></i>
-                        <span>Add to Bag</span>
-                    </button>
-                </div>
-
-                <!-- Product Card 5: Rupchanda Soyabean Oil -->
-                <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
-                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
-
-                    <div>
-                        <div class="w-full h-48 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden relative">
-                            <i class="fa-solid fa-bottle-droplet text-7xl text-amber-400 group-hover:scale-105 transition duration-300"></i>
-                        </div>
-                        <p class="text-[11px] text-slate-400 text-center mb-1">Delivery 1-2 ঘণ্টা</p>
-                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8">রুপচাঁদা সয়াবিন তেল ৫ লিটার</h3>
-                        
-                        <div class="text-center mt-2">
-                            <span class="text-sm font-black text-rose-600">৳1,000</span>
-                            <span class="text-[11px] text-slate-500 font-medium block mt-0.5">Per Piece</span>
-                        </div>
-                    </div>
-
-                    <button onclick="addToBag('Rupchanda Oil')" class="mt-4 w-full py-2 bg-dark bg-rose-600 hover:bg-rose-700 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
-                        <i class="fa-solid fa-plus text-[10px]"></i>
-                        <span>Add to Bag</span>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Custom Navigation Arrows (Tailwind দিয়ে নিখুঁত ডিজাইন করা হয়েছে যাতে কার্ডের ওপর না পড়ে) -->
-        <div class="swiper-button-prev !absolute !-left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-amber-400 hover:bg-amber-500 text-slate-900 rounded-full flex items-center justify-center shadow-md cursor-pointer transition !after:text-sm !after:font-bold"></div>
-        <div class="swiper-button-next !absolute !-right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-amber-400 hover:bg-amber-500 text-slate-900 rounded-full flex items-center justify-center shadow-md cursor-pointer transition !after:text-sm !after:font-bold"></div>
-    </div>
-</div>
             </section>
 
             <!-- 5. NICHE & HEALTH CORNER -->
@@ -654,7 +1001,7 @@
                     </div>
                 </div>
             </section>
-
+   
             <!-- 6. VISUAL CATEGORY BANNERS -->
             <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="p-5 rounded-2xl bg-gradient-to-br from-brand-navy to-slate-900 text-white flex flex-col justify-between min-h-[160px] relative overflow-hidden shadow-md">
@@ -686,11 +1033,648 @@
                 </div>
             </section>
 
+                    
+            <!-- WEEKEND DEALS SECTION -->
+            <section id="weekend-deals" class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-gray-100 relative">
+
+                <!-- Header -->
+                <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+
+                    <div class="flex items-center gap-3 flex-wrap">
+
+                        <div class="flex items-center justify-center bg-brand-navy text-white px-4 py-3 rounded-xl shadow-md">
+                            <span class="font-black text-xl tracking-wider text-brand-gold">AG</span>
+                        </div>
+
+                        <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+
+                        <div class="flex items-center gap-3 flex-wrap">
+                            <h2 class="text-xl md:text-2xl font-black text-brand-navy tracking-tight flex items-center gap-2">
+                                WEEKEND DEALS
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 animate-ping"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                                </span>
+                            </h2>
+
+                            <!-- Live Countdown -->
+                            <div class="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-xs md:text-sm font-extrabold text-slate-700">
+                                <i class="fa-regular fa-clock text-red-500"></i>
+                                <span id="weekend-countdown">00h : 00m : 00s</span>
+                                <span class="text-[10px] text-slate-500 uppercase font-bold">Left</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Filters -->
+                    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+
+                        <button type="button"
+                            class="weekend-tab active"
+                            data-category="all">
+                            All Deals
+                        </button>
+
+                        <button type="button"
+                            class="weekend-tab"
+                            data-category="coffee">
+                            Coffee Blends
+                        </button>
+
+                        <button type="button"
+                            class="weekend-tab"
+                            data-category="cereal">
+                            Cereal &amp; Grains
+                        </button>
+
+                        <button type="button"
+                            class="weekend-tab"
+                            data-category="pasta">
+                            Pasta &amp; Sauce
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Slider -->
+                <div class="weekend-slider-wrapper mt-5">
+
+                    <!-- Left Arrow -->
+                    <button type="button"
+                        class="weekend-arrow weekend-arrow-left"
+                        id="weekend-prev"
+                        aria-label="Previous products">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <!-- Product Track -->
+                    <div id="weekend-slider" class="weekend-slider">
+
+                        <!-- Product 1 -->
+                        <article class="weekend-card" data-category="cereal">
+
+                            <div class="weekend-image">
+                                <span class="weekend-badge">25% OFF</span>
+                                <img
+                                    src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=80"
+                                    alt="Nutri Oats Whole Cereal"
+                                    loading="lazy">
+                            </div>
+
+                            <div class="weekend-shipping">
+                                <i class="fa-solid fa-bolt"></i> Free Shipping
+                            </div>
+
+                            <h3 class="weekend-product-title">Nutri-Oats Whole Cereal 500g</h3>
+
+                            <div class="weekend-price">
+                                <strong>৳145</strong>
+                                <del>৳160</del>
+                                <span>Per Pack</span>
+                            </div>
+
+                            <button type="button" class="weekend-add-btn" data-product="Nutri-Oats Whole Cereal">
+                                <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                            </button>
+                        </article>
+
+                        <!-- Product 2 -->
+                        <article class="weekend-card" data-category="pasta">
+
+                            <div class="weekend-image">
+                                <span class="weekend-badge">CHEF PICK</span>
+                                <img
+                                    src="https://images.unsplash.com/photo-1621996346565-e3d5d6281320?w=400&auto=format&fit=crop&q=80"
+                                    alt="Artisan Penne Pasta"
+                                    loading="lazy">
+                            </div>
+
+                            <div class="weekend-shipping">
+                                <i class="fa-regular fa-clock"></i> Delivery in 2 hours
+                            </div>
+
+                            <h3 class="weekend-product-title">Artisan Penne Pasta 1kg</h3>
+
+                            <div class="weekend-price">
+                                <strong>৳190</strong>
+                                <del>৳220</del>
+                                <span>Per Pack</span>
+                            </div>
+
+                            <button type="button" class="weekend-add-btn" data-product="Artisan Penne Pasta">
+                                <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                            </button>
+                        </article>
+
+                        <!-- Product 3 -->
+                        <article class="weekend-card" data-category="pasta">
+
+                            <div class="weekend-image">
+                                <span class="weekend-badge">FRESH BATCH</span>
+                                <img
+                                    src="https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=400&auto=format&fit=crop&q=80"
+                                    alt="Classic Italian Tomato Sauce"
+                                    loading="lazy">
+                            </div>
+
+                            <div class="weekend-shipping">
+                                <i class="fa-solid fa-bolt"></i> Free Shipping
+                            </div>
+
+                            <h3 class="weekend-product-title">Classic Italian Tomato Sauce 700g</h3>
+
+                            <div class="weekend-price">
+                                <strong>৳100</strong>
+                                <del>৳110</del>
+                                <span>Per Jar</span>
+                            </div>
+
+                            <button type="button" class="weekend-add-btn" data-product="Italian Tomato Sauce">
+                                <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                            </button>
+                        </article>
+
+                        <!-- Product 4 -->
+                        <article class="weekend-card" data-category="cereal">
+
+                            <div class="weekend-image">
+                                <span class="weekend-badge">ORGANIC</span>
+                                <img
+                                    src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&auto=format&fit=crop&q=80"
+                                    alt="Extra Virgin Olive Oil"
+                                    loading="lazy">
+                            </div>
+
+                            <div class="weekend-shipping">
+                                <i class="fa-regular fa-clock"></i> Delivery in 2 hours
+                            </div>
+
+                            <h3 class="weekend-product-title">Extra Virgin Olive Oil 500ml</h3>
+
+                            <div class="weekend-price">
+                                <strong>৳610</strong>
+                                <del>৳650</del>
+                                <span>Per Bottle</span>
+                            </div>
+
+                            <button type="button" class="weekend-add-btn" data-product="Extra Virgin Olive Oil">
+                                <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                            </button>
+                        </article>
+
+                        <!-- Product 5 -->
+                        <article class="weekend-card" data-category="coffee">
+
+                            <div class="weekend-image">
+                                <span class="weekend-badge">15% OFF</span>
+                                <img
+                                    src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&auto=format&fit=crop&q=80"
+                                    alt="Arabica Dark Roast Coffee"
+                                    loading="lazy">
+                            </div>
+
+                            <div class="weekend-shipping">
+                                <i class="fa-solid fa-bolt"></i> Free Shipping
+                            </div>
+
+                            <h3 class="weekend-product-title">Arabica Dark Roast Coffee 250g</h3>
+
+                            <div class="weekend-price">
+                                <strong>৳420</strong>
+                                <del>৳495</del>
+                                <span>Per Pack</span>
+                            </div>
+
+                            <button type="button" class="weekend-add-btn" data-product="Arabica Dark Roast Coffee">
+                                <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                            </button>
+                        </article>
+
+                    </div>
+
+                    <!-- Right Arrow -->
+                    <button type="button"
+                        class="weekend-arrow weekend-arrow-right"
+                        id="weekend-next"
+                        aria-label="Next products">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                </div>
+
+                <!-- Toast Notification -->
+                <div id="weekend-toast" class="weekend-toast" role="status" aria-live="polite"></div>
+
+            </section>
+
+         
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <img src="images/bannerone.jpg" class="img-responsive"/>
+            </div>
+     
+            <div class="max-w-7xl mx-auto px-4 py-6">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800 tracking-wide uppercase">Snacks, Noodles & More</h2>
+                </div>
+                <!-- Swiper Container with Custom Navigation Arrows -->
+                <div class="relative px-6 md:px-10">
+                        <div class="swiper snacksSwiper overflow-hidden py-2">
+                            <div class="swiper-wrapper">
+
+                                <!-- Product Card 1: Fresh Super Premium Salt -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <div class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm text-center leading-tight z-10">
+                                        ৳5<br>OFF
+                                    </div>
+                                    <span class="absolute top-2 right-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">
+                                        Most Picked
+                                    </span>
+                                    
+                                    <div>
+                                        <!-- Product Image (h-36 / h-40 balanced for optimal card height) -->
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Fresh-Super-Premium-Salt-1kg.png" class="w-full h-full object-contain p-2" alt="Fresh Super Premium Salt" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Fresh Super Premium Salt 1kg</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-xs text-slate-400 line-through mr-1 font-normal">৳42</span>
+                                            <span class="text-sm font-black text-rose-600">৳37</span>
+                                            <span class="text-[11px] text-slate-500 font-medium ml-1">Per Piece</span>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Fresh Super Premium Salt')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 2: Kacha Morich (Chilli Green) -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Kacha-Morich-Chilli-Green_1.png" class="w-full h-full object-contain p-2" alt="Kacha Morich" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Kacha Morich (Chilli Green)</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳140</span>
+                                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 100gm)</span></span>
+                                            
+                                            <select class="mt-1 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                                                <option>1kg</option>
+                                                <option>500gm</option>
+                                                <option>100gm</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Kacha Morich')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 3: Miniket Rice Loose -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <div class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm text-center leading-tight z-10">
+                                        ৳4<br>OFF
+                                    </div>
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Miniket-Rice-Loose-Premium_1.png" class="w-full h-full object-contain p-2" alt="Miniket Rice" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Miniket Rice Loose(P) (Jirashail) Kg</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-xs text-slate-400 line-through mr-1 font-normal">৳70</span>
+                                            <span class="text-sm font-black text-rose-600">৳66</span>
+                                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 0.50kg)</span></span>
+                                            
+                                            <select class="mt-1 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                                                <option>1kg</option>
+                                                <option>0.50kg</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Miniket Rice')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 4: Sugar Loose Refined Kg -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Sugar-Loose-Refined_1.jpg" class="w-full h-full object-contain p-2" alt="Sugar Loose" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Sugar Loose Refined Kg</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳113</span>
+                                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 250gm)</span></span>
+                                            
+                                            <select class="mt-1 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                                                <option>1kg</option>
+                                                <option>500gm</option>
+                                                <option>250gm</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Sugar Loose')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 5: Egg Loose -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Egg-Loose_1.jpg" class="w-full h-full object-contain p-2" alt="Egg Loose" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Egg Loose</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳12.50</span>
+                                            <span class="text-[11px] text-slate-500 font-medium block">Per Piece</span>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Egg Loose')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 6: Rupchanda Soyabean Oil 5L -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Rupchanda-Soyabean-Oil-5L_1.png" class="w-full h-full object-contain p-2" alt="Rupchanda Oil 5L" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Rupchanda Soyabean Oil 5Ltr</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳1,000</span>
+                                            <span class="text-[11px] text-slate-500 font-medium block">Per Piece</span>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Rupchanda Oil 5L')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <button class="swiper-button-prev absolute -left-3 top-1/2 -translate-y-1/2 z-20 
+                                                        w-9 h-9 bg-amber-400 hover:bg-amber-500 active:scale-95
+                                                        text-slate-900 rounded-full shadow-md 
+                                                        flex items-center justify-center 
+                                                        transition-all duration-200 cursor-pointer
+                                                        border border-amber-500/30 hover:shadow-lg">
+                                            <i class="fa-solid fa-chevron-left text-sm"></i>
+                        </button>
+
+                        <button class="swiper-button-next absolute -right-3 top-1/2 -translate-y-1/2 z-20 
+                                                        w-9 h-9 bg-amber-400 hover:bg-amber-500 active:scale-95
+                                                        text-slate-900 rounded-full shadow-md 
+                                                        flex items-center justify-center 
+                                                        transition-all duration-200 cursor-pointer
+                                                        border border-amber-500/30 hover:shadow-lg">
+                                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                        </button>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <img src="images/bannerTwo.jpg" class="img-responsive"/>
+            </div>
+              <div class="max-w-7xl mx-auto px-4 py-6">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800 tracking-wide uppercase">Everyday Cleaning Essentials</h2>
+                </div>
+                <!-- Swiper Container with Custom Navigation Arrows -->
+                <div class="relative px-6 md:px-10">
+                        <div class="swiper everyDaySwiper overflow-hidden py-2">
+                            <div class="swiper-wrapper">
+
+                                <!-- Product Card 1: Fresh Super Premium Salt -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <div class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm text-center leading-tight z-10">
+                                        ৳5<br>OFF
+                                    </div>
+                                    <span class="absolute top-2 right-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">
+                                        Most Picked
+                                    </span>
+                                    
+                                    <div>
+                                        <!-- Product Image (h-36 / h-40 balanced for optimal card height) -->
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Fresh-Super-Premium-Salt-1kg.png" class="w-full h-full object-contain p-2" alt="Fresh Super Premium Salt" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Fresh Super Premium Salt 1kg</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-xs text-slate-400 line-through mr-1 font-normal">৳42</span>
+                                            <span class="text-sm font-black text-rose-600">৳37</span>
+                                            <span class="text-[11px] text-slate-500 font-medium ml-1">Per Piece</span>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Fresh Super Premium Salt')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 2: Kacha Morich (Chilli Green) -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Kacha-Morich-Chilli-Green_1.png" class="w-full h-full object-contain p-2" alt="Kacha Morich" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Kacha Morich (Chilli Green)</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳140</span>
+                                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 100gm)</span></span>
+                                            
+                                            <select class="mt-1 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                                                <option>1kg</option>
+                                                <option>500gm</option>
+                                                <option>100gm</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Kacha Morich')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 3: Miniket Rice Loose -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <div class="absolute top-2 left-2 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm text-center leading-tight z-10">
+                                        ৳4<br>OFF
+                                    </div>
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Miniket-Rice-Loose-Premium_1.png" class="w-full h-full object-contain p-2" alt="Miniket Rice" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Miniket Rice Loose(P) (Jirashail) Kg</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-xs text-slate-400 line-through mr-1 font-normal">৳70</span>
+                                            <span class="text-sm font-black text-rose-600">৳66</span>
+                                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 0.50kg)</span></span>
+                                            
+                                            <select class="mt-1 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                                                <option>1kg</option>
+                                                <option>0.50kg</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Miniket Rice')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 4: Sugar Loose Refined Kg -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Sugar-Loose-Refined_1.jpg" class="w-full h-full object-contain p-2" alt="Sugar Loose" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Sugar Loose Refined Kg</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳113</span>
+                                            <span class="text-[10px] text-slate-500 font-medium block">Per 1kg <span class="text-slate-400">(Min. 250gm)</span></span>
+                                            
+                                            <select class="mt-1 w-full text-[11px] bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                                                <option>1kg</option>
+                                                <option>500gm</option>
+                                                <option>250gm</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Sugar Loose')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 5: Egg Loose -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Egg-Loose_1.jpg" class="w-full h-full object-contain p-2" alt="Egg Loose" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Egg Loose</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳12.50</span>
+                                            <span class="text-[11px] text-slate-500 font-medium block">Per Piece</span>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Egg Loose')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                                <!-- Product Card 6: Rupchanda Soyabean Oil 5L -->
+                                <div class="swiper-slide h-auto bg-white rounded-2xl p-3 md:p-4 border border-slate-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between group">
+                                    <span class="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">Most Picked</span>
+
+                                    <div>
+                                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                                            <img src="images/Rupchanda-Soyabean-Oil-5L_1.png" class="w-full h-full object-contain p-2" alt="Rupchanda Oil 5L" />
+                                        </div>
+                                        <p class="text-[11px] text-slate-400 text-center mb-0.5">Delivery 1-2 hour</p>
+                                        <h3 class="text-xs font-bold text-slate-800 text-center line-clamp-2 h-8 mb-1">Rupchanda Soyabean Oil 5Ltr</h3>
+                                        
+                                        <div class="text-center">
+                                            <span class="text-sm font-black text-rose-600">৳1,000</span>
+                                            <span class="text-[11px] text-slate-500 font-medium block">Per Piece</span>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="addToBag('Rupchanda Oil 5L')" class="mt-3 w-full py-2 bg-brand-navy hover:bg-rose-600 active:scale-95 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1 shadow-sm transition">
+                                        <i class="fa-solid fa-plus text-[10px]"></i>
+                                        <span>Add to Bag</span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <button class="swiper-button-prev absolute -left-3 top-1/2 -translate-y-1/2 z-20 
+                                                        w-9 h-9 bg-amber-400 hover:bg-amber-500 active:scale-95
+                                                        text-slate-900 rounded-full shadow-md 
+                                                        flex items-center justify-center 
+                                                        transition-all duration-200 cursor-pointer
+                                                        border border-amber-500/30 hover:shadow-lg">
+                                            <i class="fa-solid fa-chevron-left text-sm"></i>
+                        </button>
+
+                        <button class="swiper-button-next absolute -right-3 top-1/2 -translate-y-1/2 z-20 
+                                                        w-9 h-9 bg-amber-400 hover:bg-amber-500 active:scale-95
+                                                        text-slate-900 rounded-full shadow-md 
+                                                        flex items-center justify-center 
+                                                        transition-all duration-200 cursor-pointer
+                                                        border border-amber-500/30 hover:shadow-lg">
+                                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                        </button>
+                </div>
+            </div>
             <!-- 7. SHOP BY BRAND CAROUSEL -->
             <section class="bg-white rounded-2xl p-6 border border-brand-lightBg custom-shadow space-y-4">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                        <h2 class="text-2xl font-black text-brand-navy tracking-tight" ="shop_by_brand">Shop By Brand</h2>
+                        <h2 class="text-2xl font-black text-brand-navy tracking-tight" ="shop_by_brand"> Shop By Brand </h2>
                         <p class="text-xs text-brand-muted" ="shop_by_brand_desc">Trusted Quality, Every Day. Guaranteed authentic brands from Bangladesh and around the world.</p>
                     </div>
                     <a href="#" class="self-start sm:self-auto px-4 py-1.5 border border-brand-gold text-brand-navy rounded-full text-xs font-bold hover:bg-brand-gold hover:text-white transition">
@@ -832,27 +1816,143 @@
             </div>
         </div>
     </div>
-<!-- Swiper JS CDN -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Deals Swiper
+    new Swiper('.dealsSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 12,
+      loop: false,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      navigation: {
+        nextEl: '.swiper-button-next-custom',
+        prevEl: '.swiper-button-prev-custom',
+      },
+      breakpoints: {
+        480:  { slidesPerView: 2, spaceBetween: 12 },
+        768:  { slidesPerView: 3, spaceBetween: 14 },
+        1280: { slidesPerView: 4, spaceBetween: 16 }
+      }
+    });
 
-<script>
-  // Swiper সরাসরি ইনিশিয়ালাইজ করা
-  new Swiper(".recommendedSwiper", {
+    // Recommended Swiper
+    new Swiper(".recommendedSwiper", {
     loop: true,
     spaceBetween: 16,
     slidesPerView: 1.2,
     breakpoints: {
-      640: { slidesPerView: 2.2 },
-      768: { slidesPerView: 3.2 },
-      1024: { slidesPerView: 5 },
+        640:  { slidesPerView: 2.2 },
+        768:  { slidesPerView: 3.2 },
+        1024: { slidesPerView: 4.5 },
+        1280: { slidesPerView: 5 },
     },
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
     },
-  });
-</script>
-<script>
+    });
+    // snack swipper
+    new Swiper(".snacksSwiper", {
+    loop: true,
+    spaceBetween: 16,
+    slidesPerView: 1.2,
+    breakpoints: {
+        640:  { slidesPerView: 2.2 },
+        768:  { slidesPerView: 3.2 },
+        1024: { slidesPerView: 4.5 },
+        1280: { slidesPerView: 5 },
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    });
+
+    new Swiper(".everyDaySwiper", {
+        loop: true,
+        spaceBetween: 16,
+        slidesPerView: 1.2,
+        breakpoints: {
+            640:  { slidesPerView: 2.2 },
+            768:  { slidesPerView: 3.2 },
+            1024: { slidesPerView: 4.5 },
+            1280: { slidesPerView: 5 },
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+   let totalSeconds = (2 * 3600) + (14 * 60) + 31; // 02h : 14m : 31s
+
+        function updateCountdown() {
+            if (totalSeconds <= 0) {
+                document.getElementById('countdown-timer').innerText = "00h : 00m : 00s";
+                return;
+            }
+
+            totalSeconds--;
+
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            const format = (num) => String(num).padStart(2, '0');
+
+            document.getElementById('countdown-timer').innerText = 
+                `${format(hours)}h : ${format(minutes)}m : ${format(seconds)}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // 2. SMOOTH SLIDER CAROUSEL CONTROL
+        function scrollSlider(elementId, distance) {
+            const container = document.getElementById(elementId);
+            if (container) {
+                container.scrollBy({
+                    left: distance,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // 3. CATEGORY TAB FILTERING LOGIC
+        function filterDeals(category) {
+            const tabs = document.querySelectorAll('.deal-tab');
+            const cards = document.querySelectorAll('.deal-card');
+
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-category') === category) {
+                    tab.className = 'deal-tab px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap bg-brand-navy text-white shadow-sm';
+                } else {
+                    tab.className = 'deal-tab px-4 py-2 rounded-full text-xs font-semibold text-slate-700 border border-gray-300 hover:bg-gray-100 transition-all whitespace-nowrap';
+                }
+            });
+
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 4. TOAST NOTIFICATION FOR ADD TO BAG
+        function addToBag(productName) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+
+            toastMsg.innerText = productName;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
     // Close all open submenus
@@ -902,40 +2002,197 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+        
 document.addEventListener('DOMContentLoaded', function () {
-  const trigger = document.getElementById('locationTrigger');
-  const dropdown = document.getElementById('locationDropdown');
-  const selectedText = document.getElementById('selectedLocation');
-  const arrow = document.getElementById('locationArrow');
-  const options = document.querySelectorAll('.location-option');
+    const section = document.getElementById('weekend-deals');
 
-  // Toggle dropdown
-  trigger.addEventListener('click', function (e) {
-    e.stopPropagation();
-    dropdown.classList.toggle('hidden');
-    arrow.classList.toggle('rotate-180');
-  });
+    if (!section) return;
 
-  // Select option
-  options.forEach(option => {
-    option.addEventListener('click', function () {
-      const value = this.dataset.value;
-      selectedText.textContent = value;
-      dropdown.classList.add('hidden');
-      arrow.classList.remove('rotate-180');
+    const slider = section.querySelector('#weekend-slider');
+    const prevButton = section.querySelector('#weekend-prev');
+    const nextButton = section.querySelector('#weekend-next');
+    const countdown = section.querySelector('#weekend-countdown');
+    const tabs = section.querySelectorAll('.weekend-tab');
+    const cards = section.querySelectorAll('.weekend-card');
+    const toast = section.querySelector('#weekend-toast');
 
-      // Optional: do something with the selected city
-      // console.log('Selected city:', value);
+    /* ---------------------------------
+       1. LIVE COUNTDOWN  (3-day offer)
+       Shows remaining Days : Hours : Minutes : Seconds
+       Timezone: Asia/Dhaka
+    --------------------------------- */
+
+    // Set the exact end time of your 3-day offer here (Asia/Dhaka)
+    // Format: YYYY-MM-DDTHH:mm:ss
+    // Example: offer ends on 29 Oct 2026 at 23:59:59 Dhaka time
+    const OFFER_END = '2026-10-29T23:59:59';
+
+    function getDhakaNow() {
+        // Get current time in Asia/Dhaka
+        return new Date(
+            new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })
+        );
+    }
+
+    function getOfferEnd() {
+        // Parse the end time as if it is already in Dhaka time
+        const [datePart, timePart] = OFFER_END.split('T');
+        const [year, month, day] = datePart.split('-').map(Number);
+        const [hour, minute, second] = timePart.split(':').map(Number);
+
+        // Create a date object that represents that moment in Dhaka
+        const end = new Date();
+        end.setFullYear(year, month - 1, day);
+        end.setHours(hour, minute, second, 999);
+
+        // Adjust so that the date we created is treated as Dhaka time
+        const dhakaOffset = new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Dhaka',
+            timeZoneName: 'short'
+        });
+
+        // Safer way: convert everything through ISO with explicit offset
+        // Asia/Dhaka is always UTC+6
+        return new Date(`${OFFER_END}+06:00`);
+    }
+
+    const offerEnd = getOfferEnd();
+
+    function updateCountdown() {
+        if (!countdown) return;
+
+        const now = Date.now();
+        const remaining = Math.max(0, Math.floor((offerEnd.getTime() - now) / 1000));
+
+        const days = Math.floor(remaining / 86400);
+        const hours = Math.floor((remaining % 86400) / 3600);
+        const minutes = Math.floor((remaining % 3600) / 60);
+        const seconds = remaining % 60;
+
+        const pad = value => String(value).padStart(2, '0');
+
+        // Show Days : Hours : Minutes : Seconds
+        countdown.textContent =
+            `${pad(days)}d : ${pad(hours)}h : ${pad(minutes)}m : ${pad(seconds)}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+
+    /* ---------------------------------
+       2. SLIDER NAVIGATION
+    --------------------------------- */
+
+    function updateArrows() {
+        if (!slider) return;
+
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        const canScroll = maxScroll > 2;
+
+        prevButton.disabled = !canScroll || slider.scrollLeft <= 2;
+        nextButton.disabled =
+            !canScroll || slider.scrollLeft >= maxScroll - 2;
+
+        prevButton.style.visibility = canScroll ? 'visible' : 'hidden';
+        nextButton.style.visibility = canScroll ? 'visible' : 'hidden';
+    }
+
+    function scrollSlider(direction) {
+        if (!slider) return;
+
+        const firstVisibleCard = slider.querySelector(
+            '.weekend-card:not([style*="display: none"])'
+        );
+
+        const cardWidth = firstVisibleCard
+            ? firstVisibleCard.getBoundingClientRect().width
+            : 230;
+
+        const gap = 16;
+        const distance = (cardWidth + gap) * 2;
+
+        slider.scrollBy({
+            left: direction * distance,
+            behavior: 'smooth'
+        });
+    }
+
+    prevButton.addEventListener('click', function () {
+        scrollSlider(-1);
     });
-  });
 
-  // Close when clicking outside
-  document.addEventListener('click', function () {
-    dropdown.classList.add('hidden');
-    arrow.classList.remove('rotate-180');
-  });
+    nextButton.addEventListener('click', function () {
+        scrollSlider(1);
+    });
+
+    slider.addEventListener('scroll', updateArrows, {
+        passive: true
+    });
+
+    window.addEventListener('resize', updateArrows);
+
+    if ('ResizeObserver' in window) {
+        const resizeObserver = new ResizeObserver(updateArrows);
+        resizeObserver.observe(slider);
+    }
+
+    updateArrows();
+
+
+    /* ---------------------------------
+       3. CATEGORY FILTER
+    --------------------------------- */
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            const category = tab.dataset.category;
+
+            tabs.forEach(function (item) {
+                item.classList.toggle('active', item === tab);
+            });
+
+            cards.forEach(function (card) {
+                const matches =
+                    category === 'all' ||
+                    card.dataset.category === category;
+
+                card.style.display = matches ? 'flex' : 'none';
+            });
+
+            slider.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+
+            requestAnimationFrame(updateArrows);
+        });
+    });
+
+
+    /* ---------------------------------
+       4. ADD TO BAG TOAST
+    --------------------------------- */
+
+    let toastTimeout;
+
+    section.querySelectorAll('.weekend-add-btn').forEach(function (button) {
+        button.addEventListener('click', function () {
+            const productName = button.dataset.product || 'Product';
+
+            toast.textContent = productName + ' selected';
+            toast.classList.add('show');
+
+            clearTimeout(toastTimeout);
+
+            toastTimeout = setTimeout(function () {
+                toast.classList.remove('show');
+            }, 2500);
+        });
+    });
 });
-</script>
+
+  </script>
 
 </body>
 </html>
