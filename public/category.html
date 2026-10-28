@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akij Galleria | Elevated Curations for Your Everyday</title>
+
+  <!-- Compiled Local Tailwind CSS -->
+  <link rel="stylesheet" href="./output.css">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans + Hind Siliguri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    /* Optional: better font for Bengali */
+    body.lang-bn {
+      font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .glass-badge { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); }
+
+    /* Responsive fixes */
+    *, *::before, *::after { box-sizing: border-box; }
+    body { overflow-x: hidden; }
+    .swiper-button-prev::after,
+    .swiper-button-next::after { content: none !important; display: none !important; }
+    .recommendedSwiper { min-width: 0; }
+    .recommendedSwiper .swiper-slide { height: auto; }
+    .recommendedSwiper img { display: block; }
+    @media (max-width: 767px) {
+      header .max-w-7xl { row-gap: .75rem; }
+      main { min-width: 0; }
+      aside, aside > div, aside nav { width: 100%; min-width: 0; }
+      aside > div { position: static; }
+      .recommendedSwiper { padding-left: 2px; padding-right: 2px; }
+      .recommendedSwiper + .swiper-button-prev { left: 0; }
+      .recommendedSwiper + .swiper-button-next { right: 0; }
+      #countdown-timer { white-space: nowrap; }
+    }
+    .swiper-button-next, .swiper-button-prev { width:27px; height:28px; color: #0f2c59; }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- TOP HEADER UTILITY BAR -->
+    <div class="bg-brand-navy text-white text-xs py-2 px-4 md:px-8 border-b border-brand-navy/20">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-4 text-gray-200">
+                <span class="flex items-center gap-1">
+                    <i class="fa-solid fa-truck-fast text-brand-gold"></i>
+                    <span data-i18n="express_delivery">60 Mins Express Delivery Available</span>
+                </span>
+                <span class="hidden md:inline-block text-white/30">|</span>
+                <span class="hidden md:flex items-center gap-1">
+                    <i class="fa-solid fa-shield-halved text-brand-green"></i>
+                    <span data-i18n="genuine_products">100% Genuine Products</span>
+                </span>
+            </div>
+            <div class="flex items-center space-x-5">
+                <a href="#" class="hover:text-brand-gold transition flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span data-i18n="track_order">Track Order</span>
+                </a>
+                <a href="#" class="hover:text-brand-gold transition flex items-center gap-1">
+                    <i class="fa-solid fa-store"></i>
+                    <span data-i18n="store_locator">Store Locator</span>
+                </a>
+                <div class="h-3 w-[1px] bg-white/20"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-brand-lightBg custom-shadow">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-3.5 flex items-center justify-between gap-4">
+            
+            <!-- LOGO AREA -->
+            <a href="#" class="flex items-center gap-3 shrink-0 group">
+                <div class="w-10 h-10 md:w-11 md:h-11 rounded-lg bg-gradient-to-br from-brand-navy to-[#081833] flex items-center justify-center shadow-md border border-brand-gold/30">
+                    <span class="text-white font-extrabold text-xl tracking-tighter">A<span class="text-brand-green">G</span></span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl md:text-2xl font-black text-brand-navy tracking-tight leading-none group-hover:text-brand-green transition">AKIJ GALLERIA</span>
+                    <span class="text-[9px] tracking-[0.2em] uppercase font-semibold text-brand-gold mt-0.5" data-i18n="tagline">Elevated Curations</span>
+                </div>
+            </a>
+
+            <!-- SEARCH BAR -->
+            <div class="flex-1 max-w-2xl mx-2 md:mx-6">
+                <div class="relative flex items-center bg-brand-bg rounded-xl border border-brand-lightBg focus-within:border-brand-gold focus-within:ring-1 focus-within:ring-brand-gold transition">
+                    
+                    <!-- Location Selector -->
+                    <details class="relative group z-20 px-3.5 py-2.5 border-r border-gray-200 cursor-pointer select-none shrink-0">
+                        <summary class="flex items-center px-3 m-2 text-xs md:text-sm list-none [&::-webkit-details-marker]:hidden">
+                            <i class="fa-solid fa-location-dot text-brand-navy"></i>
+                            <span id="selectedLocation" class="font-semibold text-brand-dark ml-1" data-i18n="location_dhaka">Select Location</span>
+                            <i class="fa-solid fa-chevron-down text-[10px] text-brand-muted transition-transform duration-200 group-open:rotate-180 mr-3"></i>
+                        </summary>
+
+                        <!-- Dropdown Menu -->
+                        <div class="absolute left-0 top-full mt-2 w-36 bg-white rounded-xl shadow-lg border border-gray-100 py-1.5 z-50">
+                            <ul class="text-sm">
+                                <li><button type="button" onclick="document.getElementById('selectedLocation').innerText='Dhaka'; this.closest('details').removeAttribute('open');" class="w-full text-left px-4 py-2 hover:bg-brand-bg text-brand-dark font-medium transition">Dhaka</button></li>
+                                <li><button type="button" onclick="document.getElementById('selectedLocation').innerText='Khulna'; this.closest('details').removeAttribute('open');" class="w-full text-left px-4 py-2 hover:bg-brand-bg text-brand-dark font-medium transition">Khulna</button></li>
+                                <li><button type="button" onclick="document.getElementById('selectedLocation').innerText='Rajshahi'; this.closest('details').removeAttribute('open');" class="w-full text-left px-4 py-2 hover:bg-brand-bg text-brand-dark font-medium transition">Rajshahi</button></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <!-- Search Input -->
+                    <input type="text" id="searchInput" 
+                        placeholder="Search products, brands, essentials..." 
+                        data-i18n-placeholder="search_placeholder"
+                        class="flex-1 min-w-0 px-3 pr-12 py-2.5 bg-transparent text-sm focus:outline-none text-brand-dark placeholder-brand-muted">
+
+                    <!-- Search Button -->
+                    <button class="absolute right-1.5 p-2 bg-brand-gold text-white rounded-lg hover:bg-brand-goldHover transition w-8 h-8 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- RIGHT ACTION ICONS -->
+            <div class="flex items-center space-x-3 md:space-x-5 text-brand-navy">
+                <a href="#" class="hidden sm:flex items-center gap-2 hover:text-brand-green transition">
+                    <i class="fa-regular fa-user text-lg"></i>
+                    <span class="text-xs font-semibold hidden lg:inline" data-i18n="my_account">My Account</span>
+                </a>
+                <a href="#" class="relative hover:text-brand-green transition p-1">
+                    <i class="fa-regular fa-heart text-xl"></i>
+                    <span class="absolute -top-1 -right-1 bg-brand-green text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+                </a>
+                
+                <!-- CART COUNTER -->
+                <div class="flex items-center gap-2 bg-brand-bg p-1.5 px-3 rounded-xl border border-brand-lightBg hover:border-brand-gold transition cursor-pointer">
+                    <div class="relative">
+                        <i class="fa-solid fa-bag-shopping text-brand-navy text-xl"></i>
+                        <span class="absolute -top-1.5 -right-2 bg-brand-navy text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
+                    </div>
+                    <div class="hidden md:flex flex-col text-left">
+                        <span class="text-[10px] text-brand-muted font-medium leading-none" data-i18n="bag_value">Bag Value</span>
+                        <span class="text-xs font-bold text-brand-navy">৳ 2,480</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN BODY CONTENT GRID -->
+    <!-- FIX: Removed md:flex-row from main to allow breadcrumb to sit at the top full width -->
+    <main class="max-w-7xl mx-auto w-full px-4 md:px-8 py-6 flex-1 flex flex-col gap-4">
+        
+        <!-- BREADCRUMB -->
+        <nav class="flex items-center text-sm font-medium text-slate-500 w-full" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-2">
+            <li class="inline-flex items-center">
+              <a href="#" class="hover:text-brand-navy transition flex items-center gap-1.5">
+                <i class="fa-solid fa-house text-xs"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <i class="fa-solid fa-chevron-right text-[10px] mx-1 text-slate-400"></i>
+                <a href="#" class="hover:text-brand-navy transition">Food & Staples</a>
+              </div>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <i class="fa-solid fa-chevron-right text-[10px] mx-1 text-slate-400"></i>
+                <span class="text-brand-navy font-bold">Eggs</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+
+        <!-- FIX: Wrapped Sidebar and Content in a flex-row container -->
+        <div class="flex flex-col md:flex-row gap-6 w-full">
+            <!-- SIDEBAR VERTICAL MEGA MENU -->
+            <aside class="w-full md:w-64 shrink-0">
+                <div class="bg-white rounded-2xl p-4 border border-brand-lightBg custom-shadow sticky top-24">
+                    <div class="flex items-center justify-between pb-3 border-b border-brand-lightBg mb-3">
+                        <h3 class="font-bold text-brand-navy text-sm uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-bars-staggered text-brand-gold"></i>
+                            <span data-i18n="categories">Categories</span>
+                        </h3>
+                    </div>
+                    <nav class="w-full bg-white p-3 rounded-2xl shadow-sm border border-gray-100">
+                            <ul class="space-y-1">
+                                <!-- 1. Food & Staples -->
+                                <li class="relative">
+                                    <a href="#" class="menu-trigger flex items-center justify-between p-2.5 rounded-xl text-sm font-semibold text-brand-dark hover:bg-brand-bg hover:text-brand-navy transition" data-target="food-menu">
+                                        <span class="flex items-center gap-3">
+                                            <i class="fa-solid fa-wheat-awn text-brand-gold w-5 text-center"></i>
+                                            <span data-i18n="cat_food">Food & Staples</span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-right text-xs text-brand-muted transition-transform"></i>
+                                    </a>
+
+                                    <div id="food-menu" class="submenu hidden pl-6 pr-2 py-1 space-y-1">
+                                        <ul class="space-y-1 border-l-2 border-brand-bg pl-2">
+                                            <li class="relative">
+                                                <a href="#" class="submenu-trigger flex items-center justify-between p-2 rounded-lg text-sm text-gray-700 hover:bg-brand-bg hover:text-brand-navy transition" data-target="rice-menu">
+                                                <span>Rice & Grains</span>
+                                                <i class="fa-solid fa-chevron-down text-[10px] text-brand-muted"></i>
+                                                </a>
+                                                <div id="rice-menu" class="submenu hidden pl-4 py-1 space-y-1">
+                                                    <ul class="space-y-1">
+                                                        <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-600 hover:bg-brand-bg hover:text-brand-navy transition">Basmati Rice</a></li>
+                                                        <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-600 hover:bg-brand-bg hover:text-brand-navy transition">Brown Rice</a></li>
+                                                        <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-600 hover:bg-brand-bg hover:text-brand-navy transition">Whole Wheat</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="relative">
+                                                <a href="#" class="submenu-trigger flex items-center justify-between p-2 rounded-lg text-sm text-gray-700 hover:bg-brand-bg hover:text-brand-navy transition" data-target="oil-menu">
+                                                <span>Cooking Oil & Ghee</span>
+                                                <i class="fa-solid fa-chevron-down text-[10px] text-brand-muted"></i>
+                                                </a>
+                                                <div id="oil-menu" class="submenu hidden pl-4 py-1 space-y-1">
+                                                    <ul class="space-y-1">
+                                                        <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-600 hover:bg-brand-bg hover:text-brand-navy transition">Sunflower Oil</a></li>
+                                                        <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-600 hover:bg-brand-bg hover:text-brand-navy transition">Olive Oil</a></li>
+                                                        <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-600 hover:bg-brand-bg hover:text-brand-navy transition">Mustard Oil</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-700 hover:bg-brand-bg hover:text-brand-navy transition">Spices & Masalas</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!-- 2. Beverages -->
+                                <li class="relative">
+                                    <a href="#" class="menu-trigger flex items-center justify-between p-2.5 rounded-xl text-sm font-semibold text-brand-dark hover:bg-brand-bg hover:text-brand-navy transition" data-target="beverages-menu">
+                                        <span class="flex items-center gap-3">
+                                            <i class="fa-solid fa-bottle-water text-brand-gold w-5 text-center"></i>
+                                            <span data-i18n="cat_beverages">Beverages</span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-right text-xs text-brand-muted transition-transform"></i>
+                                    </a>
+                                    <div id="beverages-menu" class="submenu hidden pl-6 pr-2 py-1 space-y-1">
+                                        <ul class="space-y-1 border-l-2 border-brand-bg pl-2">
+                                            <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-700 hover:bg-brand-bg hover:text-brand-navy transition">Tea & Coffee</a></li>
+                                            <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-700 hover:bg-brand-bg hover:text-brand-navy transition">Juices & Drinks</a></li>
+                                            <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-700 hover:bg-brand-bg hover:text-brand-navy transition">Energy Drinks</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!-- 3. Clothing -->
+                                <li class="relative">
+                                    <a href="#" class="menu-trigger flex items-center justify-between p-2.5 rounded-xl text-sm font-semibold text-brand-dark hover:bg-brand-bg hover:text-brand-navy transition" data-target="clothing-menu">
+                                        <span class="flex items-center gap-3">
+                                            <i class="fa-solid fa-shirt text-brand-gold w-5 text-center"></i>
+                                            <span data-i18n="cat_clothing">Clothing</span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-right text-xs text-brand-muted transition-transform"></i>
+                                    </a>
+                                    <div id="clothing-menu" class="submenu hidden pl-6 pr-2 py-1 space-y-1">
+                                        <ul class="space-y-1 border-l-2 border-brand-bg pl-2">
+                                            <li class="relative">
+                                                <a href="#" class="submenu-trigger flex items-center justify-between p-2 rounded-lg text-sm text-gray-700 hover:bg-brand-bg hover:text-brand-navy transition" data-target="mens-menu">
+                                                <span>Men's Wear</span>
+                                                <i class="fa-solid fa-chevron-down text-[10px] text-brand-muted"></i>
+                                                </a>
+                                                <div id="mens-menu" class="submenu hidden pl-4 py-1 space-y-1">
+                                                    <ul class="space-y-1">
+                                                        <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-600 hover:bg-brand-bg hover:text-brand-navy transition">T-Shirts</a></li>
+                                                        <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-600 hover:bg-brand-bg hover:text-brand-navy transition">Casual Shirts</a></li>
+                                                        <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-600 hover:bg-brand-bg hover:text-brand-navy transition">Jeans & Pants</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-700 hover:bg-brand-bg hover:text-brand-navy transition">Women's Wear</a></li>
+                                            <li><a href="#" class="block p-2 rounded-lg text-sm text-gray-700 hover:bg-brand-bg hover:text-brand-navy transition">Kids' Clothing</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!-- Other Simple Items -->
+                                <li>
+                                    <a href="#" class="flex items-center justify-between p-2.5 rounded-xl text-sm font-semibold text-brand-dark hover:bg-brand-bg hover:text-brand-navy transition">
+                                        <span class="flex items-center gap-3">
+                                            <i class="fa-solid fa-laptop text-brand-gold w-5 text-center"></i>
+                                            <span data-i18n="cat_electronics">Electronics</span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-right text-xs text-brand-muted"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center justify-between p-2.5 rounded-xl text-sm font-semibold text-brand-dark hover:bg-brand-bg hover:text-brand-navy transition">
+                                        <span class="flex items-center gap-3">
+                                            <i class="fa-solid fa-pump-soap text-brand-gold w-5 text-center"></i>
+                                            <span data-i18n="cat_cosmetics">Cosmetics</span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-right text-xs text-brand-muted"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                    </nav>
+
+                    <!-- Delivery Time -->
+                    <div class="p-4 border-b border-gray-100">
+                        <h4 class="font-bold text-brand-navy text-xs uppercase tracking-wider mb-3">Delivery Time</h4>
+                        <label class="flex items-center justify-between cursor-pointer">
+                            <span class="text-sm text-slate-700 font-medium">60 Min Express</span>
+                            <div class="relative">
+                                <input type="checkbox" class="sr-only peer" checked>
+                                <div class="w-10 h-5 bg-gray-200 peer-checked:bg-brand-navy rounded-full transition"></div>
+                                <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-5 shadow"></div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Sub-Brands -->
+                    <div class="p-4 border-b border-gray-100">
+                        <h4 class="font-bold text-brand-navy text-xs uppercase tracking-wider mb-3">Sub-Brands</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-brand-navy focus:ring-brand-navy"> Akij Plastics
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-brand-navy focus:ring-brand-navy"> Akij Homeware
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-brand-navy focus:ring-brand-navy"> Akij Apparel
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-brand-navy focus:ring-brand-navy"> Akij Ceramics
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Availability -->
+                    <div class="p-4 border-b border-gray-100">
+                        <h4 class="font-bold text-brand-navy text-xs uppercase tracking-wider mb-3">Availability</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-brand-navy focus:ring-brand-navy" checked> In Stock
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-brand-navy focus:ring-brand-navy"> Limited Time Deals
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Niche Offers -->
+                    <div class="p-4">
+                        <h4 class="font-bold text-brand-navy text-xs uppercase tracking-wider mb-3">Niche Offers</h4>
+                        <div class="space-y-2">
+                            <a href="#" class="flex items-center gap-2 text-sm text-slate-700 hover:text-brand-navy">
+                                <i class="fa-solid fa-leaf text-brand-green text-xs"></i> Homeware & Decor
+                            </a>
+                            <a href="#" class="flex items-center gap-2 text-sm text-slate-700 hover:text-brand-navy">
+                                <i class="fa-solid fa-utensils text-brand-gold text-xs"></i> Kitchenware & Cookery
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN DASHBOARD CONTENT -->
+            <div class="flex-1 space-y-8 overflow-hidden">
+
+                <!-- 1. HERO BANNER -->
+                <section class="relative rounded-2xl overflow-hidden shadow-lg min-h-[200px] md:min-h-[240px] flex items-center bg-gradient-to-r from-[#0a1f3d] via-[#0f2c59] to-[#1a3a6e]">
+                    <div class="w-full relative z-10">
+                        <img src="images/category_banner.jpg" class="w-full h-auto object-cover rounded-xl" alt="Banner" onerror="this.style.display='none'">
+                    </div>
+                </section>
+
+                <section id="products">
+                    <!-- Sort & Filter bar -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-2 flex-wrap p-2">
+                            <span class="text-sm text-slate-500 font-medium">Sort by:</span>
+                            <button
+                                class="filter-pill active px-3 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white transition">Default</button>
+                            <button
+                                class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-slate-700 hover:bg-gray-50 transition">Best</button>
+                            <button
+                                class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-slate-700 hover:bg-gray-50 transition">Price:
+                                Low</button>
+                            <button
+                                class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-slate-700 hover:bg-gray-50 transition">Price:
+                                High</button>
+                            <button
+                                class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-slate-700 hover:bg-gray-50 transition">Newest</button>
+                        </div>
+                        <p class="text-xs text-slate-500">Showing <span class="font-semibold text-brand-navy">24</span>
+                            products</p>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="product-grid">
+
+                        <!-- Product Card 1 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <span
+                                class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">Limited
+                                Time Offer</span>
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&auto=format&fit=crop&q=80"
+                                    alt="Akij Bath Aloe Rose Foam" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Akij Bath Aloe Rose
+                                Foam 30ml</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 340</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 550</span>
+                                </div>
+                                <button onclick="addToBag('Akij Bath Aloe Rose Foam')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1585515320310-259814713e93?w=300&auto=format&fit=crop&q=80"
+                                    alt="Premium Homeware Cookeries" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Premium Homeware
+                                Cookeries</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 660</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 990</span>
+                                </div>
+                                <button onclick="addToBag('Premium Homeware Cookeries')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <span
+                                class="absolute top-3 right-3 bg-brand-green text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">Most
+                                Picked</span>
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=300&auto=format&fit=crop&q=80"
+                                    alt="Premium Homeware Pots" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Premium Homeware
+                                Pots</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 1,290</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 1,890</span>
+                                </div>
+                                <button onclick="addToBag('Premium Homeware Pots')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <span
+                                class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">Limited
+                                Time Offer</span>
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=300&auto=format&fit=crop&q=80"
+                                    alt="Akij Galleria Premium Cookeries" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Akij Galleria
+                                Premium Cookeries</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 370</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 550</span>
+                                </div>
+                                <button onclick="addToBag('Akij Galleria Premium Cookeries')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 5 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <span
+                                class="absolute top-3 right-3 bg-brand-green text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">Most
+                                Picked</span>
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300&auto=format&fit=crop&q=80"
+                                    alt="ClearLife Electronics" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Akij Galleria
+                                ClearLife Electronics</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 1,890</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 2,490</span>
+                                </div>
+                                <button onclick="addToBag('ClearLife Electronics')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 6 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <span
+                                class="absolute top-3 right-3 bg-brand-green text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">Most
+                                Picked</span>
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1621939514649-c9ad0c1aaca2?w=300&auto=format&fit=crop&q=80"
+                                    alt="Fresh Super Premium Salt" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Fresh Super Premium
+                                Salt 1kg</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 37</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 42</span>
+                                </div>
+                                <button onclick="addToBag('Fresh Super Premium Salt')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 7 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=300&auto=format&fit=crop&q=80"
+                                    alt="Sugar Loose Refined" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Sugar Loose Refined
+                            </h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 113</span>
+                                </div>
+                                <button onclick="addToBag('Sugar Loose')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 8 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <span
+                                class="absolute top-3 right-3 bg-brand-green text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">Most
+                                Picked</span>
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=300&auto=format&fit=crop&q=80"
+                                    alt="Rupchanda Soyabean Oil" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Rupchanda Soyabean
+                                Oil 5Ltr</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 1,000</span>
+                                </div>
+                                <button onclick="addToBag('Rupchanda Oil 5L')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 9 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <span
+                                class="absolute top-3 right-3 bg-brand-green text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">Most
+                                Picked</span>
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1621939514649-c9ad0c1aaca2?w=300&auto=format&fit=crop&q=80"
+                                    alt="Fresh Super Premium Salt" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Fresh Super Premium
+                                Salt 1kg</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 37</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 42</span>
+                                </div>
+                                <button onclick="addToBag('Fresh Super Premium Salt')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 10 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&auto=format&fit=crop&q=80"
+                                    alt="Akij Neem Face Wash" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Akij Neem Face Wash
+                                (20ml)</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 149</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 180</span>
+                                </div>
+                                <button onclick="addToBag('Akij Neem Face Wash')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 11 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <span
+                                class="absolute top-3 right-3 bg-brand-green text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">Most
+                                Picked</span>
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1608248597260-9f5b61f185db?w=300&auto=format&fit=crop&q=80"
+                                    alt="Akij Hand Wash Pack" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Akij Hand Wash Pack
+                                (20ml)</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 37</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 55</span>
+                                </div>
+                                <button onclick="addToBag('Akij Hand Wash')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 12 -->
+                        <div
+                            class="product-card bg-white rounded-2xl p-3.5 border border-gray-100 relative flex flex-col transition duration-200">
+                            <div
+                                class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=300&auto=format&fit=crop&q=80"
+                                    alt="Dual Electronics" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-1">Delivery 1-2 hour</p>
+                            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 min-h-[32px] mb-2">Akij Galleria Dual
+                                Electronics</h3>
+                            <div class="mt-auto">
+                                <div class="flex items-baseline gap-1.5 mb-3">
+                                    <span class="text-sm font-black text-rose-600">৳ 2,490</span>
+                                    <span class="text-[11px] text-slate-400 line-through">৳ 3,200</span>
+                                </div>
+                                <button onclick="addToBag('Dual Electronics')"
+                                    class="w-full py-2 bg-brand-navy hover:bg-rose-600 text-white text-xs font-bold rounded-full flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Load More Button (Interactive) -->
+                   <div class="mt-8 text-center">
+    <button id="loadMoreBtn" onclick="loadMoreProducts()"
+        class="inline-flex items-center justify-center px-10 py-3 mt-6 bg-brand-navy border border-brand-navy text-white font-bold rounded-xl text-sm whitespace-nowrap hover:bg-white hover:text-blue-500 transition mx-auto shadow-sm">
+        Load More Products
+    </button>
+</div>
+
+            </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-navy text-white pt-12 pb-8 border-t border-brand-navy/20 mt-12">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-white/10">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded bg-brand-green flex items-center justify-center font-black text-white text-base">AG</div>
+                        <span class="text-xl font-black text-white tracking-tight">AKIJ GALLERIA</span>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed" data-i18n="footer_about">
+                        Akij Galleria is your one-stop premium e-commerce destination delivering high-quality groceries, electronics, and lifestyle products with trust.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brand-gold mb-3 uppercase tracking-wider" data-i18n="quick_links">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#" class="hover:text-white transition" data-i18n="about_akij">About Akij Group</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-i18n="all_categories">All Categories</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-i18n="flash_sales">Special Flash Sales</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-i18n="privacy_policy">Privacy Policy & Terms</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brand-gold mb-3 uppercase tracking-wider" data-i18n="coverage_area">Coverage Area</h4>
+                    <p class="text-xs text-gray-300 leading-relaxed mb-2" data-i18n="coverage_desc">
+                        Express 60-Minute Delivery currently active in:
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 text-[11px]">
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Gulshan</span>
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Banani</span>
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Dhanmondi</span>
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Uttara</span>
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Mirpur</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brand-gold mb-3 uppercase tracking-wider" data-i18n="contact_us">Contact Us</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-brand-green"></i> 16700 / 09613-000000</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-brand-green"></i> support@akijgalleria.com</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-green"></i> Akij House, Gulshan-1, Dhaka</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+                <p data-i18n="copyright">© 2026 Akij Galleria. All rights reserved. Powered by Akij Group.</p>
+                <div class="flex items-center space-x-3 text-lg">
+                    <i class="fa-brands fa-cc-visa text-white"></i>
+                    <i class="fa-brands fa-cc-mastercard text-white"></i>
+                    <span class="text-xs font-bold bg-pink-600 text-white px-2 py-0.5 rounded">bKash</span>
+                    <span class="text-xs font-bold bg-orange-600 text-white px-2 py-0.5 rounded">Nagad</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ELEMENTS -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button class="bg-brand-green text-white px-4 py-3 rounded-full shadow-2xl flex items-center gap-2.5 hover:bg-emerald-600 transition group border border-white/20">
+            <i class="fa-solid fa-comments text-lg group-hover:scale-110 transition"></i>
+            <span class="text-xs font-bold pr-1" data-i18n="help_chat">Help & Chat</span>
+        </button>
+    </div>
+
+    <div class="fixed bottom-6 left-6 z-50 hidden sm:block">
+        <div class="bg-brand-navy text-white px-4 py-2.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-brand-gold/30">
+            <div class="relative">
+                <i class="fa-solid fa-basket-shopping text-brand-gold"></i>
+                <span class="absolute -top-2 -right-2 bg-brand-green text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
+            </div>
+            <div class="text-xs">
+                <span class="block text-[10px] text-gray-300" data-i18n="quick_cart">Quick Cart</span>
+                <span class="font-bold text-white">৳ 2,480</span>
+            </div>
+        </div>
+    </div>
+
+ 
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Add to Bag Toast Function
+        function addToBag(productName) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+
+            if (!toast || !toastMsg) return;
+
+            toastMsg.innerText = productName + " added to bag!";
+            
+            // Show toast
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Sidebar Menu Accordion Logic
+        document.addEventListener('DOMContentLoaded', function () {
+            function closeAllSubmenus(exceptId = null) {
+                document.querySelectorAll('.submenu').forEach(menu => {
+                    if (menu.id !== exceptId) {
+                        menu.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Main category clicks
+            document.querySelectorAll('.menu-trigger').forEach(trigger => {
+                trigger.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const targetId = this.dataset.target;
+                    const targetMenu = document.getElementById(targetId);
+
+                    if (targetMenu.classList.contains('hidden')) {
+                        closeAllSubmenus(targetId);
+                        targetMenu.classList.remove('hidden');
+                    } else {
+                        targetMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Submenu clicks (Level 3)
+            document.querySelectorAll('.submenu-trigger').forEach(trigger => {
+                trigger.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const targetId = this.dataset.target;
+                    const targetMenu = document.getElementById(targetId);
+
+                    const parentSubmenu = this.closest('.submenu');
+                    parentSubmenu.querySelectorAll('.submenu').forEach(menu => {
+                        if (menu.id !== targetId) {
+                            menu.classList.add('hidden');
+                        }
+                    });
+
+                    targetMenu.classList.toggle('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
