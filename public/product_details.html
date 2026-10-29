@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akij Galleria | Elevated Curations for Your Everyday</title>
+
+  <!-- Compiled Local Tailwind CSS -->
+  <link rel="stylesheet" href="./output.css">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans + Hind Siliguri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    /* Optional: better font for Bengali */
+  
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-badge {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+        }
+
+    /* Responsive fixes */
+    *, *::before, *::after { box-sizing: border-box; }
+    body { overflow-x: hidden; }
+    .swiper-button-prev::after,
+    .swiper-button-next::after { content: none !important; display: none !important; }
+    .recommendedSwiper { min-width: 0; }
+    .recommendedSwiper .swiper-slide { height: auto; }
+    .recommendedSwiper img { display: block; }
+    @media (max-width: 767px) {
+      header .max-w-7xl { row-gap: .75rem; }
+      main { min-width: 0; }
+      aside, aside > div, aside nav { width: 100%; min-width: 0; }
+      aside > div { position: static; }
+      .recommendedSwiper { padding-left: 2px; padding-right: 2px; }
+      .recommendedSwiper + .swiper-button-prev { left: 0; }
+      .recommendedSwiper + .swiper-button-next { right: 0; }
+      #countdown-timer { white-space: nowrap; }
+    }
+.swiper-button-next, .swiper-button-prev {
+    width:27px;
+    height:28px;
+    color: #0f2c59;
+}
+
+
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- TOP HEADER UTILITY BAR -->
+    <div class="bg-brand-navy text-white text-xs py-2 px-4 md:px-8 border-b border-brand-navy/20">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-4 text-gray-200">
+                <span class="flex items-center gap-1">
+                    <i class="fa-solid fa-truck-fast text-brand-gold"></i>
+                    <span ="express_delivery">60 Mins Express Delivery Available</span>
+                </span>
+                <span class="hidden md:inline-block text-white/30">|</span>
+                <span class="hidden md:flex items-center gap-1">
+                    <i class="fa-solid fa-shield-halved text-brand-green"></i>
+                    <span ="genuine_products">100% Genuine Products</span>
+                </span>
+            </div>
+            <div class="flex items-center space-x-5">
+                <a href="#" class="hover:text-brand-gold transition flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span ="track_order">Track Order</span>
+                </a>
+                <a href="#" class="hover:text-brand-gold transition flex items-center gap-1">
+                    <i class="fa-solid fa-store"></i>
+                    <span ="store_locator">Store Locator</span>
+                </a>
+                <div class="h-3 w-[1px] bg-white/20"></div>
+
+              
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-brand-lightBg custom-shadow">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-3.5 flex items-center justify-between gap-4">
+            
+            <!-- LOGO AREA -->
+            <a href="#" class="flex items-center gap-3 shrink-0 group">
+                <div class="w-10 h-10 md:w-11 md:h-11 rounded-lg bg-gradient-to-br from-brand-navy to-[#081833] flex items-center justify-center shadow-md border border-brand-gold/30">
+                    <span class="text-white font-extrabold text-xl tracking-tighter">A<span class="text-brand-green">G</span></span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl md:text-2xl font-black text-brand-navy tracking-tight leading-none group-hover:text-brand-green transition">AKIJ GALLERIA</span>
+                    <span class="text-[9px] tracking-[0.2em] uppercase font-semibold text-brand-gold mt-0.5" ="tagline">Elevated Curations</span>
+                </div>
+            </a>
+
+            <!-- SEARCH BAR -->
+            <div class="flex-1 max-w-2xl mx-2 md:mx-6">
+                <!-- Parent container holds the background, border, and focus states -->
+                <div class="relative flex items-center bg-brand-bg rounded-xl border border-brand-lightBg focus-within:border-brand-gold focus-within:ring-1 focus-within:ring-brand-gold transition">
+                    
+                    <!-- Location Selector using <details> -->
+                    <details class="relative group z-20 px-3.5 py-2.5 border-r border-gray-200 cursor-pointer select-none shrink-0">
+                        <summary class="flex items-center px-3 m-2 text-xs md:text-sm list-none [&::-webkit-details-marker]:hidden">
+                            <i class="fa-solid fa-location-dot text-brand-navy"></i>
+                            <span id="selectedLocation" class="font-semibold text-brand-dark ml-1" >Select Location</span>
+                            <i class="fa-solid fa-chevron-down text-[10px] text-brand-muted transition-transform duration-200 group-open:rotate-180 mr-3"></i>
+                        </summary>
+
+                        <!-- Dropdown Menu -->
+                        <div class="absolute left-0 top-full mt-2 w-36 bg-white rounded-xl shadow-lg border border-gray-100 py-1.5 z-50">
+                            <ul class="text-sm">
+                                <li><button type="button" onclick="document.getElementById('selectedLocation').innerText='Dhaka'; this.closest('details').removeAttribute('open');" class="w-full text-left px-4 py-2 hover:bg-brand-bg text-brand-dark font-medium transition">Dhaka</button></li>
+                                <li><button type="button" onclick="document.getElementById('selectedLocation').innerText='Khulna'; this.closest('details').removeAttribute('open');" class="w-full text-left px-4 py-2 hover:bg-brand-bg text-brand-dark font-medium transition">Khulna</button></li>
+                                <li><button type="button" onclick="document.getElementById('selectedLocation').innerText='Rajshahi'; this.closest('details').removeAttribute('open');" class="w-full text-left px-4 py-2 hover:bg-brand-bg text-brand-dark font-medium transition">Rajshahi</button></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <!-- Search Input -->
+                    <input type="text" id="searchInput" 
+                        placeholder="Search products, brands, essentials..." 
+                        
+                        class="flex-1 min-w-0 px-3 pr-12 py-2.5 bg-transparent text-sm focus:outline-none text-brand-dark placeholder-brand-muted">
+
+                    <!-- Search Button -->
+                    <button class="absolute right-1.5 p-2 bg-brand-gold text-white rounded-lg hover:bg-brand-goldHover transition w-8 h-8 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- RIGHT ACTION ICONS -->
+            <div class="flex items-center space-x-3 md:space-x-5 text-brand-navy">
+                <a href="#" class="hidden sm:flex items-center gap-2 hover:text-brand-green transition">
+                    <i class="fa-regular fa-user text-lg"></i>
+                    <span class="text-xs font-semibold hidden lg:inline" ="my_account">My Account</span>
+                </a>
+                <a href="#" class="relative hover:text-brand-green transition p-1">
+                    <i class="fa-regular fa-heart text-xl"></i>
+                    <span class="absolute -top-1 -right-1 bg-brand-green text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+                </a>
+                
+                <!-- CART COUNTER -->
+                <div class="flex items-center gap-2 bg-brand-bg p-1.5 px-3 rounded-xl border border-brand-lightBg hover:border-brand-gold transition cursor-pointer">
+                    <div class="relative">
+                        <i class="fa-solid fa-bag-shopping text-brand-navy text-xl"></i>
+                        <span class="absolute -top-1.5 -right-2 bg-brand-navy text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
+                    </div>
+                    <div class="hidden md:flex flex-col text-left">
+                        <span class="text-[10px] text-brand-muted font-medium leading-none" ="bag_value">Bag Value</span>
+                        <span class="text-xs font-bold text-brand-navy">৳ 2,480</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN BODY CONTENT GRID -->
+    <main class="max-w-7xl mx-auto w-full px-4 md:px-8 py-6 flex-1 flex flex-col md:flex-row gap-6">
+
+        
+<a href="#" class="flex flex-col items-center bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs md:flex-row md:max-w-xl md:flex-row md:max-w-xl">
+    <img class="object-cover w-full rounded-base h-64 md:h-auto md:w-48 mb-4 md:mb-0" src="/public/images/Teer-Soyabean-Oil-2L_1.jpg" alt="">
+    <div class="flex flex-col justify-between md:p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">Streamlining your design process today.</h5>
+        <p class="mb-6 text-body">In today’s fast-paced digital landscape, fostering seamless collaboration among Developers and IT Operations.</p>
+        <div>
+            <button type="button" class="inline-flex items-center w-auto text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                Read more
+                <svg class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+            </button>
+        </div>
+    </div>
+</a>
+
+
+     
+    </main>
+
+    <!-- FOOTER (partially translated) -->
+    <footer class="bg-brand-navy text-white pt-12 pb-8 border-t border-brand-navy/20 mt-12">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-white/10">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded bg-brand-green flex items-center justify-center font-black text-white text-base">AG</div>
+                        <span class="text-xl font-black text-white tracking-tight">AKIJ GALLERIA</span>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed" ="footer_about">
+                        Akij Galleria is your one-stop premium e-commerce destination delivering high-quality groceries, electronics, and lifestyle products with trust.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brand-gold mb-3 uppercase tracking-wider" ="quick_links">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#" class="hover:text-white transition" ="about_akij">About Akij Group</a></li>
+                        <li><a href="#" class="hover:text-white transition" ="all_categories">All Categories</a></li>
+                        <li><a href="#" class="hover:text-white transition" ="flash_sales">Special Flash Sales</a></li>
+                        <li><a href="#" class="hover:text-white transition" ="privacy_policy">Privacy Policy & Terms</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brand-gold mb-3 uppercase tracking-wider" ="coverage_area">Coverage Area</h4>
+                    <p class="text-xs text-gray-300 leading-relaxed mb-2" ="coverage_desc">
+                        Express 60-Minute Delivery currently active in:
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 text-[11px]">
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Gulshan</span>
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Banani</span>
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Dhanmondi</span>
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Uttara</span>
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-gray-200">Mirpur</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brand-gold mb-3 uppercase tracking-wider" ="contact_us">Contact Us</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-brand-green"></i> 16700 / 09613-000000</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-brand-green"></i> support@akijgalleria.com</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-green"></i> Akij House, Gulshan-1, Dhaka</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+                <p ="copyright">© 2026 Akij Galleria. All rights reserved. Powered by Akij Group.</p>
+                <div class="flex items-center space-x-3 text-lg">
+                    <i class="fa-brands fa-cc-visa text-white"></i>
+                    <i class="fa-brands fa-cc-mastercard text-white"></i>
+                    <span class="text-xs font-bold bg-pink-600 text-white px-2 py-0.5 rounded">bKash</span>
+                    <span class="text-xs font-bold bg-orange-600 text-white px-2 py-0.5 rounded">Nagad</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ELEMENTS -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button class="bg-brand-green text-white px-4 py-3 rounded-full shadow-2xl flex items-center gap-2.5 hover:bg-emerald-600 transition group border border-white/20">
+            <i class="fa-solid fa-comments text-lg group-hover:scale-110 transition"></i>
+            <span class="text-xs font-bold pr-1" ="help_chat">Help & Chat</span>
+        </button>
+    </div>
+
+    <div class="fixed bottom-6 left-6 z-50 hidden sm:block">
+        <div class="bg-brand-navy text-white px-4 py-2.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-brand-gold/30">
+            <div class="relative">
+                <i class="fa-solid fa-basket-shopping text-brand-gold"></i>
+                <span class="absolute -top-2 -right-2 bg-brand-green text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
+            </div>
+            <div class="text-xs">
+                <span class="block text-[10px] text-gray-300" ="quick_cart">Quick Cart</span>
+                <span class="font-bold text-white">৳ 2,480</span>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Deals Swiper
+    new Swiper('.dealsSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 12,
+      loop: false,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      navigation: {
+        nextEl: '.swiper-button-next-custom',
+        prevEl: '.swiper-button-prev-custom',
+      },
+      breakpoints: {
+        480:  { slidesPerView: 2, spaceBetween: 12 },
+        768:  { slidesPerView: 3, spaceBetween: 14 },
+        1280: { slidesPerView: 4, spaceBetween: 16 }
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.categoryExploreSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 12,
+      loop: true, // Auto sliding infinite cholbe
+      autoplay: { 
+          delay: 4000, 
+          disableOnInteraction: false // User touch korleo autoplay bondho hobe na
+      },
+      // Navigation buttons (jodi add korte chan)
+      navigation: {
+        nextEl: '.swiper-button-next-custom',
+        prevEl: '.swiper-button-prev-custom',
+      },
+      breakpoints: {
+        480:  { slidesPerView: 2, spaceBetween: 12 },
+        768:  { slidesPerView: 3, spaceBetween: 14 },
+        1280: { slidesPerView: 4, spaceBetween: 16 }
+      }
+    });
+});
+
+    // Recommended Swiper
+    new Swiper(".recommendedSwiper", {
+    loop: true,
+    spaceBetween: 16,
+    slidesPerView: 1.2,
+    breakpoints: {
+        640:  { slidesPerView: 2.2 },
+        768:  { slidesPerView: 3.2 },
+        1024: { slidesPerView: 4.5 },
+        1280: { slidesPerView: 5 },
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    });
+    // snack swipper
+    new Swiper(".snacksSwiper", {
+    loop: true,
+    spaceBetween: 16,
+    slidesPerView: 1.2,
+    breakpoints: {
+        640:  { slidesPerView: 2.2 },
+        768:  { slidesPerView: 3.2 },
+        1024: { slidesPerView: 4.5 },
+        1280: { slidesPerView: 5 },
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    });
+
+    new Swiper(".everyDaySwiper", {
+        loop: true,
+        spaceBetween: 16,
+        slidesPerView: 1.2,
+        breakpoints: {
+            640:  { slidesPerView: 2.2 },
+            768:  { slidesPerView: 3.2 },
+            1024: { slidesPerView: 4.5 },
+            1280: { slidesPerView: 5 },
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+   let totalSeconds = (2 * 3600) + (14 * 60) + 31; // 02h : 14m : 31s
+
+        function updateCountdown() {
+            if (totalSeconds <= 0) {
+                document.getElementById('countdown-timer').innerText = "00h : 00m : 00s";
+                return;
+            }
+
+            totalSeconds--;
+
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            const format = (num) => String(num).padStart(2, '0');
+
+            document.getElementById('countdown-timer').innerText = 
+                `${format(hours)}h : ${format(minutes)}m : ${format(seconds)}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // 2. SMOOTH SLIDER CAROUSEL CONTROL
+        function scrollSlider(elementId, distance) {
+            const container = document.getElementById(elementId);
+            if (container) {
+                container.scrollBy({
+                    left: distance,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // 3. CATEGORY TAB FILTERING LOGIC
+        function filterDeals(category) {
+            const tabs = document.querySelectorAll('.deal-tab');
+            const cards = document.querySelectorAll('.deal-card');
+
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-category') === category) {
+                    tab.className = 'deal-tab px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap bg-brand-navy text-white shadow-sm';
+                } else {
+                    tab.className = 'deal-tab px-4 py-2 rounded-full text-xs font-semibold text-slate-700 border border-gray-300 hover:bg-gray-100 transition-all whitespace-nowrap';
+                }
+            });
+
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 4. TOAST NOTIFICATION FOR ADD TO BAG
+        function addToBag(productName) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+
+            toastMsg.innerText = productName;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Close all open submenus
+    function closeAllSubmenus(exceptId = null) {
+        document.querySelectorAll('.submenu').forEach(menu => {
+            if (menu.id !== exceptId) {
+                menu.classList.add('hidden');
+            }
+        });
+    }
+
+    // Main category clicks
+    document.querySelectorAll('.menu-trigger').forEach(trigger => {
+        trigger.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const targetId = this.dataset.target;
+            const targetMenu = document.getElementById(targetId);
+
+            if (targetMenu.classList.contains('hidden')) {
+                closeAllSubmenus(targetId);
+                targetMenu.classList.remove('hidden');
+            } else {
+                targetMenu.classList.add('hidden');
+            }
+        });
+    });
+
+    // Submenu clicks (Level 3)
+    document.querySelectorAll('.submenu-trigger').forEach(trigger => {
+        trigger.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const targetId = this.dataset.target;
+            const targetMenu = document.getElementById(targetId);
+
+            const parentSubmenu = this.closest('.submenu');
+            parentSubmenu.querySelectorAll('.submenu').forEach(menu => {
+                if (menu.id !== targetId) {
+                    menu.classList.add('hidden');
+                }
+            });
+
+            targetMenu.classList.toggle('hidden');
+        });
+    });
+});
+        
+document.addEventListener('DOMContentLoaded', function () {
+    const section = document.getElementById('weekend-deals');
+
+    if (!section) return;
+
+    const slider = section.querySelector('#weekend-slider');
+    const prevButton = section.querySelector('#weekend-prev');
+    const nextButton = section.querySelector('#weekend-next');
+    const countdown = section.querySelector('#weekend-countdown');
+    const tabs = section.querySelectorAll('.weekend-tab');
+    const cards = section.querySelectorAll('.weekend-card');
+    const toast = section.querySelector('#weekend-toast');
+
+    /* ---------------------------------
+       1. LIVE COUNTDOWN  (3-day offer)
+       Shows remaining Days : Hours : Minutes : Seconds
+       Timezone: Asia/Dhaka
+    --------------------------------- */
+
+    // Set the exact end time of your 3-day offer here (Asia/Dhaka)
+    // Format: YYYY-MM-DDTHH:mm:ss
+    // Example: offer ends on 29 Oct 2026 at 23:59:59 Dhaka time
+    const OFFER_END = '2026-10-29T23:59:59';
+
+    function getDhakaNow() {
+        // Get current time in Asia/Dhaka
+        return new Date(
+            new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })
+        );
+    }
+
+    function getOfferEnd() {
+        // Parse the end time as if it is already in Dhaka time
+        const [datePart, timePart] = OFFER_END.split('T');
+        const [year, month, day] = datePart.split('-').map(Number);
+        const [hour, minute, second] = timePart.split(':').map(Number);
+
+        // Create a date object that represents that moment in Dhaka
+        const end = new Date();
+        end.setFullYear(year, month - 1, day);
+        end.setHours(hour, minute, second, 999);
+
+        // Adjust so that the date we created is treated as Dhaka time
+        const dhakaOffset = new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Dhaka',
+            timeZoneName: 'short'
+        });
+
+        // Safer way: convert everything through ISO with explicit offset
+        // Asia/Dhaka is always UTC+6
+        return new Date(`${OFFER_END}+06:00`);
+    }
+
+    const offerEnd = getOfferEnd();
+
+    function updateCountdown() {
+        if (!countdown) return;
+
+        const now = Date.now();
+        const remaining = Math.max(0, Math.floor((offerEnd.getTime() - now) / 1000));
+
+        const days = Math.floor(remaining / 86400);
+        const hours = Math.floor((remaining % 86400) / 3600);
+        const minutes = Math.floor((remaining % 3600) / 60);
+        const seconds = remaining % 60;
+
+        const pad = value => String(value).padStart(2, '0');
+
+        // Show Days : Hours : Minutes : Seconds
+        countdown.textContent =
+            `${pad(days)}d : ${pad(hours)}h : ${pad(minutes)}m : ${pad(seconds)}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+
+    /* ---------------------------------
+       2. SLIDER NAVIGATION
+    --------------------------------- */
+
+    function updateArrows() {
+        if (!slider) return;
+
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        const canScroll = maxScroll > 2;
+
+        prevButton.disabled = !canScroll || slider.scrollLeft <= 2;
+        nextButton.disabled =
+            !canScroll || slider.scrollLeft >= maxScroll - 2;
+
+        prevButton.style.visibility = canScroll ? 'visible' : 'hidden';
+        nextButton.style.visibility = canScroll ? 'visible' : 'hidden';
+    }
+
+    function scrollSlider(direction) {
+        if (!slider) return;
+
+        const firstVisibleCard = slider.querySelector(
+            '.weekend-card:not([style*="display: none"])'
+        );
+
+        const cardWidth = firstVisibleCard
+            ? firstVisibleCard.getBoundingClientRect().width
+            : 230;
+
+        const gap = 16;
+        const distance = (cardWidth + gap) * 2;
+
+        slider.scrollBy({
+            left: direction * distance,
+            behavior: 'smooth'
+        });
+    }
+
+    prevButton.addEventListener('click', function () {
+        scrollSlider(-1);
+    });
+
+    nextButton.addEventListener('click', function () {
+        scrollSlider(1);
+    });
+
+    slider.addEventListener('scroll', updateArrows, {
+        passive: true
+    });
+
+    window.addEventListener('resize', updateArrows);
+
+    if ('ResizeObserver' in window) {
+        const resizeObserver = new ResizeObserver(updateArrows);
+        resizeObserver.observe(slider);
+    }
+
+    updateArrows();
+
+
+    /* ---------------------------------
+       3. CATEGORY FILTER
+    --------------------------------- */
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            const category = tab.dataset.category;
+
+            tabs.forEach(function (item) {
+                item.classList.toggle('active', item === tab);
+            });
+
+            cards.forEach(function (card) {
+                const matches =
+                    category === 'all' ||
+                    card.dataset.category === category;
+
+                card.style.display = matches ? 'flex' : 'none';
+            });
+
+            slider.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+
+            requestAnimationFrame(updateArrows);
+        });
+    });
+
+
+    /* ---------------------------------
+       4. ADD TO BAG TOAST
+    --------------------------------- */
+
+    let toastTimeout;
+
+    section.querySelectorAll('.weekend-add-btn').forEach(function (button) {
+        button.addEventListener('click', function () {
+            const productName = button.dataset.product || 'Product';
+
+            toast.textContent = productName + ' selected';
+            toast.classList.add('show');
+
+            clearTimeout(toastTimeout);
+
+            toastTimeout = setTimeout(function () {
+                toast.classList.remove('show');
+            }, 2500);
+        });
+    });
+});
+
+  </script>
+
+</body>
+</html> 
