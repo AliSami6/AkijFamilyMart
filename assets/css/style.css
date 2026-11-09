@@ -2,31 +2,47 @@
    AKIJ GALLERIA - PREMIUM HEADER
 ========================================= */
 
-:root {
-  --akij-navy: #0a1f44;
-  --akij-gold: #d4a017;
-  --akij-green: #008b49;
-  --akij-light: #f8f9fc;
-  --akij-white: #ffffff;
-  --galleria-brand: #22c55e;
-  --search-header-border-color: #dce1e9;
-  --header-input-color: #9299a7;
-  --header-button-border-color: #e5e7eb;
-  --header-button-hover-bg: #fffaf0;
-  --header-nav-dropdown-color: #e5b52d;
-  --header-dropdown-menu-color: #edf0f4;
-  --header-dropdown-item-hover: #fff8e7;
-  --ring-shadow-color: #0000;
-  --offcanvas-header-color: #eee;
-  --header-border-bottom-color: #f0f0f0;
-  --bg-brand-black-color: #0d0d0d;
-  --bg-green-700-hover-color: #059669;
-  --black-color-short: #000;
-  --icon-tabler-color: #111827;
-  --brand-green-color: #16a34a;
-  --font-weight-semibold: 600;
-}
 
+:root {
+  /* ===== Core Brand Colors (from Logo) ===== */
+  --akij-navy: #0F0F12;              /* Almost black – stronger match with logo background */
+  --akij-gold: #ff4da6 ;              /* Kept – works well as secondary accent */
+  --akij-green: #FF4DA6;             /* Kept for success / authorized */
+  --akij-light: #FFF5F9;             /* Very soft pink tint instead of cool gray */
+  --akij-white: #ffffff;
+
+  /* Main Brand Color from Logo */
+  --galleria-brand: #E6007E;         /* Primary Galleria Pink */
+  --galleria-brand-dark: #B0005A;    /* Darker pink for hover */
+  --galleria-brand-light: #FF4DA6;   /* Lighter pink for hover/active */
+
+  /* ===== Header Specific ===== */
+  --search-header-border-color: #F0D6E4;
+  --header-input-color: #9CA3AF;
+  --header-button-border-color: #F3E8EE;
+  --header-button-hover-bg: #FFF0F6;          /* Soft pink hover */
+  --header-nav-dropdown-color: #E6007E;       /* Pink instead of gold */
+  --header-dropdown-menu-color: #FFF5F9;
+  --header-dropdown-item-hover: #FFE4F0;
+
+  --ring-shadow-color: #0000;
+  --offcanvas-header-color: #FFF5F9;
+  --header-border-bottom-color: #F8E7EF;
+
+  /* ===== Dark & Utility ===== */
+  --bg-brand-black-color: #0F0F12;
+  --bg-green-700-hover-color: #FF4DA6;
+  --black-color-short: #000;
+  --icon-tabler-color: #1F2937;
+  --brand-green-color: #E6007E;
+  --font-weight-semibold: 600;
+
+  /* Extra useful tokens */
+  --brand-pink: #E6007E;
+  --brand-pink-dark: #B0005A;
+  --brand-pink-light: #FF4DA6;
+  --brand-menu-bg: #1A0A14;          /* Dark pinkish black for nav */
+}
 /* Header Base */
 header {
   background: var(--akij-white);
@@ -59,7 +75,7 @@ header .pt-5 {
 }
 
 header .navbar-brand img {
-  max-height: 58px;
+  height:100px;
   width: auto;
   object-fit: contain;
 }
@@ -194,7 +210,10 @@ header nav .dropdown > button:active {
   --tw-ring-shadow: 0 0 var(--ring-shadow-color) !important;
   --tw-ring-offset-shadow: 0 0 var(--ring-shadow-color) !important;
 }
-
+header nav .dropdown > button {
+  color: var(--akij-light) !important;
+  border-color: var(--akij-gold) !important;
+}
 /* Premium Navy + Gold Hover */
 header nav .dropdown > button:hover {
   background-color: var(--akij-gold) !important;
@@ -243,7 +262,7 @@ header nav .dropdown > button:hover {
 }
 .border-blue-600 {
   --tw-border-opacity: 1;
-  border-color: var(--black-color-short);
+  border-color: var(--akij-light);
 }
 .icon-tabler-eye,
 .icon-tabler-heart {
@@ -311,3 +330,29 @@ header nav .dropdown > button:hover {
 .starcolor{
   color:var(--akij-gold);
 }
+.swiper-pagination{
+  border-color: var(--akij-light) !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: var(--akij-gold) !important;
+}
+.swiper-button-next,.swiper-button-prev:hover {
+  background-color: var(--akij-light) !important;
+  color: var(--akij-navy) !important;
+}
+
+.border-gray-300:hover {
+  border-color: rgb(209 213 219 / var(--akij-gold)) !important;
+}
+.border-gray-300:focus {
+  border-color: rgb(209 213 219 / var(--akij-gold)) !important;
+  box-shadow: 0 0 0 3px rgba(209, 213, 23, 0.12) !important;
+}
+
+.thumbnails .tns-nav-active .thumbnails-img {
+  border-color: var(--akij-gold) !important;
+}
+.text-base a:hover {
+  color: var(--akij-green) !important;
+}
+

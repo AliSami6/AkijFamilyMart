@@ -1,16 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
+
   content: ["./*.html", "./src/**/*.{html,js}", "./assets/**/*.{html,js}"],
+
   theme: {
     container: {
       center: true,
       padding: "1rem",
-      screens: { "2xl": "1320px" },
+      screens: {
+        "2xl": "1320px",
+      },
     },
+
     fontFamily: {
       sans: ['"Inter"', "sans-serif"],
     },
+
     fontSize: {
       sm: "0.75rem",
       base: "0.875rem",
@@ -23,13 +29,34 @@ module.exports = {
       "5xl": "3.052rem",
       xs: "0.6875rem",
     },
-    extend: {
-      flex: { 0: "0 0 auto" },
 
-      // Moved custom colors inside extend so default Tailwind colors aren't wiped out
+    extend: {
+      flex: {
+        0: "0 0 auto",
+      },
+
       colors: {
         white: "#ffffff",
-        primary: "#0aad0a",
+
+        // Primary Galleria Brand
+        primary: "#E6007E",
+
+        // Brand Pink
+        pink: {
+          50: "#FFF5F9",
+          100: "#FFE4F0",
+          200: "#F8C5DC",
+          300: "#FF99C9",
+          400: "#FF4DA6",
+          500: "#E6007E",
+          600: "#CC006F",
+          700: "#B0005A",
+          800: "#8F0049",
+          900: "#700039",
+          950: "#450024",
+        },
+
+        // Neutral Colors
         gray: {
           50: "#F9F9F9",
           100: "#f0f3f2",
@@ -46,19 +73,23 @@ module.exports = {
           txt: "#5c6c75",
           lighter: "#F9F9F9",
         },
+
+        // Akij Galleria Green (Success / Status)
         green: {
-          50: "#e8ffe6",
-          100: "#cefdca",
-          200: "#a2fb9b",
-          300: "#68f561",
-          400: "#37ea31",
-          500: "#16d012",
-          600: "#0d7e0f",
-          700: "#0a5f0b",
-          800: "#106412",
-          900: "#135416",
-          950: "#042f07",
+          50: "#E8FFF0",
+          100: "#CEFDDA",
+          200: "#A2FBC0",
+          300: "#68F59A",
+          400: "#37EA78",
+          500: "#16C75A",
+          600: "#0D9E45",
+          700: "#0A7937",
+          800: "#106432",
+          900: "#135428",
+          950: "#042F16",
         },
+
+        // Gold Accent
         amber: {
           50: "#FDFDEA",
           100: "#FDF6B2",
@@ -71,6 +102,8 @@ module.exports = {
           800: "#723B13",
           900: "#633112",
         },
+
+        // Akij Brand Variables
         akij: {
           navy: "var(--akij-navy)",
           gold: "var(--akij-gold)",
@@ -78,14 +111,28 @@ module.exports = {
           light: "var(--akij-light)",
           white: "var(--akij-white)",
         },
-        galleria: { brand: "var(--galleria-brand)" },
+
+        // Galleria Brand
+        galleria: {
+          brand: "var(--galleria-brand)",
+          dark: "var(--galleria-brand-dark)",
+          light: "var(--galleria-brand-light)",
+        },
+
+        // Brand Utilities
         brand: {
-          navy: "#0a1f44",
-          gold: "#d4a017",
-          green: "#22c55e",
+          navy: "#0F0F12",
+          gold: "#FF4DA6",
+          green: "#FF4DA6",
           black: "var(--bg-brand-black-color)",
           "green-color": "var(--brand-green-color)",
+          pink: "var(--brand-pink)",
+          "pink-dark": "var(--brand-pink-dark)",
+          "pink-light": "var(--brand-pink-light)",
+          "menu-bg": "var(--brand-menu-bg)",
         },
+
+        // Header Colors
         header: {
           input: "var(--header-input-color)",
           border: "var(--header-border-bottom-color)",
@@ -96,17 +143,26 @@ module.exports = {
           "dropdown-menu": "var(--header-dropdown-menu-color)",
           "dropdown-hover": "var(--header-dropdown-item-hover)",
         },
-        offcanvas: { header: "var(--offcanvas-header-color)" },
-        icon: { tabler: "var(--icon-tabler-color)" },
+
+        offcanvas: {
+          header: "var(--offcanvas-header-color)",
+        },
+
+        icon: {
+          tabler: "var(--icon-tabler-color)",
+        },
       },
 
-      maxWidth: { "screen-xs": "300px" },
+      maxWidth: {
+        "screen-xs": "300px",
+      },
 
       fontWeight: {
         semibold: "600",
       },
     },
   },
+
   plugins: [
     require("@tailwindcss/forms")({ strategy: "class" }),
     require("@tailwindcss/typography"),
