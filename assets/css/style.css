@@ -75,7 +75,7 @@ header .pt-5 {
 }
 
 header .navbar-brand img {
-  height:100px;
+  height:80px !important;
   width: auto;
   object-fit: contain;
 }
@@ -333,8 +333,12 @@ header nav .dropdown > button:hover {
 .swiper-pagination{
   border-color: var(--akij-light) !important;
 }
+.swiper-pagination-bullet {
+  border-color: var(--akij-light) !important;
+}
 .swiper-pagination-bullet-active {
-  background-color: var(--akij-gold) !important;
+  background-color: var(--akij-light) !important;
+  border-color: var(--akij-light) !important;
 }
 .swiper-button-next,.swiper-button-prev:hover {
   background-color: var(--akij-light) !important;
@@ -356,3 +360,11 @@ header nav .dropdown > button:hover {
   color: var(--akij-green) !important;
 }
 
+.heartIcon{
+  background-color: var(--akij-light) !important;
+  color: var(--akij-navy) !important;
+}
+.category-tab {
+  transition: all 0.3s ease;
+  margin:4px;
+}

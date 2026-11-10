@@ -83,7 +83,7 @@
             </div>
           </div>
         </div>
-        <div class="pt-5">
+        <div class="pt-3">
           <div class="container">
             <div class="flex flex-wrap w-full items-center justify-between">
               <div class="lg:w-1/6 md:w-1/2 w-2/5">
@@ -108,9 +108,9 @@
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="icon icon-tabler icon-tabler-search"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 26 26"
                         stroke-width="2"
                         stroke="currentColor"
                         fill="none"
@@ -315,9 +315,9 @@
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           class="icon icon-tabler icon-tabler-search"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 26 26"
                           stroke-width="2"
                           stroke="currentColor"
                           fill="none"
@@ -1349,384 +1349,62 @@
       </section>
 
      <!-- DYNAMIC INTERACTIVE COLLECTION TABS & PRODUCT GRID -->
-<section id="products-grid" class="max-w-7xl mx-auto px-4 my-8">
+    <section id="products-grid" class="max-w-7xl mx-auto px-4 my-8">
     
-    <!-- Section Header & Filter Controls -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-gray-200">
-        <div>
-            <h2 class="text-2xl font-extrabold text-navy">Curated Product Collections</h2>
-            <p class="text-xs text-gray-500">Pick from top brands, fresh stock, and exclusive bundle deals</p>
-        </div>
-
-        <!-- Interactive Category Filter Tabs -->
-        <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1.5 px-1">
-            <button onclick="filterCategory('all')" id="tab-all" 
-                class="category-tab active-tab bg-navy text-primary px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition shadow-sm">
-                All Items
-            </button>
-            <button onclick="filterCategory('grocery')" id="tab-grocery" 
-                class="category-tab bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition">
-                Grocery & Oils
-            </button>
-            <button onclick="filterCategory('household')" id="tab-household" 
-                class="category-tab bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition">
-                Household & Cleaners
-            </button>
-            <button onclick="filterCategory('womens')" id="tab-womens" 
-                class="category-tab bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition">
-                Women's Care
-            </button>
-            <button onclick="filterCategory('brands')" id="tab-brands" 
-                class="category-tab bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition">
-                Our Exclusive Brands
-            </button>
-        </div>
-    </div>
-
-    <!-- Sorting & Result Summary -->
-    <div class="flex items-center justify-between text-xs text-gray-500 my-4">
-        <span id="productCountText" class="m-2">Showing 10 Products</span>
-        <div class="flex items-center gap-2">
-            <label for="sortSelect" class="font-medium text-gray-600  m-4">Sort By:</label>
-            <select id="sortSelect" onchange="sortProducts()" class="bg-white border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-navy">
-                <option value="default">Default</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="discount">Highest Discount</option>
-            </select>
-        </div>
-    </div>
-
-    <!-- PRODUCT GRID -->
-    <div id="gridContainer" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        <!-- Products will be dynamically rendered via JS -->
-    </div>
-</section>
-
-<script>
-    // ====================== PRODUCT DATA ======================
-    const products = [
-        {
-            id: 1,
-            name: "Haldiram's Sev Bhujia",
-            category: "grocery",
-            brand: "Haldiram's",
-            image: "assets/images/products/product-img-1.jpg",
-            price: 18,
-            oldPrice: 24,
-            rating: 4.5,
-            reviews: 149,
-            badge: "Sale",
-            badgeColor: "bg-red-600"
-        },
-        {
-            id: 2,
-            name: "NutriChoice Digestive",
-            category: "grocery",
-            brand: "NutriChoice",
-            image: "assets/images/products/product-img-2.jpg",
-            price: 24,
-            oldPrice: null,
-            rating: 4.5,
-            reviews: 25,
-            badge: "14%",
-            badgeColor: "bg-gray-800"
-        },
-        {
-            id: 3,
-            name: "Cadbury 5 Star Chocolate",
-            category: "grocery",
-            brand: "Cadbury",
-            image: "assets/images/products/product-img-3.jpg",
-            price: 32,
-            oldPrice: 35,
-            rating: 5,
-            reviews: 469,
-            badge: null,
-            badgeColor: ""
-        },
-        {
-            id: 4,
-            name: "Onion Flavour Potato",
-            category: "grocery",
-            brand: "Lay's",
-            image: "assets/images/products/product-img-4.jpg",
-            price: 3,
-            oldPrice: 5,
-            rating: 3.5,
-            reviews: 456,
-            badge: "Hot",
-            badgeColor: "bg-red-600"
-        },
-        {
-            id: 5,
-            name: "Salted Instant Popcorn",
-            category: "grocery",
-            brand: "Act II",
-            image: "assets/images/products/product-img-5.jpg",
-            price: 13,
-            oldPrice: 18,
-            rating: 4.5,
-            reviews: 39,
-            badge: null,
-            badgeColor: ""
-        },
-        {
-            id: 6,
-            name: "Blueberry Greek Yogurt",
-            category: "grocery",
-            brand: "Epigamia",
-            image: "assets/images/products/product-img-6.jpg",
-            price: 18,
-            oldPrice: 24,
-            rating: 4.5,
-            reviews: 189,
-            badge: "Sale",
-            badgeColor: "bg-red-600"
-        },
-        {
-            id: 7,
-            name: "Britannia Cheese Slices",
-            category: "grocery",
-            brand: "Britannia",
-            image: "assets/images/products/product-img-7.jpg",
-            price: 24,
-            oldPrice: null,
-            rating: 5,
-            reviews: 345,
-            badge: null,
-            badgeColor: ""
-        },
-        {
-            id: 8,
-            name: "Kellogg's Original Cereals",
-            category: "grocery",
-            brand: "Kellogg's",
-            image: "assets/images/products/product-img-8.jpg",
-            price: 32,
-            oldPrice: 35,
-            rating: 4,
-            reviews: 90,
-            badge: null,
-            badgeColor: ""
-        },
-        {
-            id: 9,
-            name: "Slurrp Millet Chocolate",
-            category: "brands",
-            brand: "Slurrp",
-            image: "assets/images/products/product-img-9.jpg",
-            price: 3,
-            oldPrice: 5,
-            rating: 4.5,
-            reviews: 90,
-            badge: null,
-            badgeColor: ""
-        },
-        {
-            id: 10,
-            name: "Amul Butter - 500 g",
-            category: "grocery",
-            brand: "Amul",
-            image: "assets/images/products/product-img-10.jpg",
-            price: 13,
-            oldPrice: 18,
-            rating: 4.5,
-            reviews: 90,
-            badge: null,
-            badgeColor: ""
-        }
-    ];
-
-    // Current state
-    let currentCategory = 'all';
-    let currentSort = 'default';
-
-    // ====================== RENDER STARS ======================
-    function renderStars(rating) {
-        let stars = '';
-        const fullStars = Math.floor(rating);
-        const hasHalf = rating % 1 !== 0;
-
-        for (let i = 0; i < fullStars; i++) {
-            stars += `
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star-filled" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" stroke-width="0" fill="currentColor" />
-                </svg>`;
-        }
-
-        if (hasHalf) {
-            stars += `
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star-half-filled" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 1a.993 .993 0 0 1 .823 .443l.067 .116l2.852 5.781l6.38 .925c.741 .108 1.08 .94 .703 1.526l-.07 .095l-.078 .086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1 -1.249 1.135l-.101-.035l-.101-.046l-5.693 -3l-5.706 3c-.105 .055 -.212 .09 -.32 .106l-.106 .01a1.003 1.003 0 0 1 -1.038 -1.06l.013 -.11l1.09 -6.355l-4.623 -4.5a1.001 1.001 0 0 1 .328 -1.647l.113 -.036l.114 -.023l6.379 -.925l2.853 -5.78a.968 .968 0 0 1 .904 -.56zm0 3.274v12.476a1 1 0 0 1 .239 .029l.115 .036l.112 .05l4.363 2.299l-.836 -4.873a1 1 0 0 1 .136 -.696l.07 -.099l.082 -.09l3.546 -3.453l-4.891 -.708a1 1 0 0 1 -.62 -.344l-.073 -.097l-.06 -.106l-2.183 -4.424z" stroke-width="0" fill="currentColor" />
-                </svg>`;
-        }
-
-        const emptyStars = 5 - Math.ceil(rating);
-        for (let i = 0; i < emptyStars; i++) {
-            stars += `
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="14" height="14" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-                </svg>`;
-        }
-
-        return stars;
-    }
-
-    // ====================== RENDER PRODUCT CARD ======================
-    function renderProductCard(product) {
-        return `
-        <div class="relative rounded-lg break-words border bg-white border-gray-300 card-product">
-            <div class="flex-auto p-4">
-                <div class="text-center relative flex justify-center">
-                    ${product.badge ? `
-                        <div class="absolute top-0 left-0 z-10">
-                            <span class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded ${product.badgeColor} text-white">
-                                ${product.badge}
-                            </span>
-                        </div>` : ''}
-                    
-                    <a href="product_details.html">
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-auto" />
-                    </a>
-
-                    <div class="absolute w-full bottom-[15%] opacity-0 invisible card-product-action">
-                        <a href="#!" class="h-[34px] w-[34px] leading-[34px] bg-white shadow inline-flex items-center justify-center rounded-lg hover:bg-gray-800 hover:text-white" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View">
-                            <span data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                    <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
-                                </svg>
-                            </span>
-                        </a>
-                        <a href="#!" class="h-[34px] w-[34px] leading-[34px] bg-white shadow inline-flex items-center justify-center rounded-lg hover:bg-gray-800 hover:text-white" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="flex flex-col gap-3">
-                    <a href="#!" class="text-decoration-none text-gray-500">
-                        <small>${product.brand}</small>
-                    </a>
-                    
-                    <div class="flex flex-col gap-2">
-                        <h3 class="text-base truncate">
-                            <a href="#!">${product.name}</a>
-                        </h3>
-                        
-                        <div class="flex items-center">
-                            <div class="flex flex-row gap-3">
-                                <small class="text-yellow-500 flex items-center">
-                                    ${renderStars(product.rating)}
-                                </small>
-                                <div class="flex flex-row gap-1">
-                                    <span class="text-gray-500 text-sm">${product.rating}</span>
-                                    <span class="text-gray-500 text-sm">(${product.reviews})</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-gray-900 font-semibold">$${product.price}</span>
-                            ${product.oldPrice ? `<span class="line-through text-gray-500">$${product.oldPrice}</span>` : ''}
-                        </div>
-                        <div>
-                            <button type="button" class="btn inline-flex items-center gap-x-1 bg-gray-800 text-white border-blue-600 disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-green-700 hover:border-green-700 active:bg-green-700 active:border-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 btn-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="14" height="14" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M12 5l0 14" />
-                                    <path d="M5 12l14 0" />
-                                </svg>
-                                <span>Add</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <!-- Section Header & Filter Controls -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-gray-200">
+            <div>
+                <h2 class="text-2xl font-extrabold text-navy">Curated Product Collections</h2>
+                <p class="text-xs text-gray-500">Pick from top brands, fresh stock, and exclusive bundle deals</p>
             </div>
-        </div>`;
-    }
 
-    // ====================== FILTER + SORT + RENDER ======================
-    function getFilteredProducts() {
-        let filtered = [...products];
+            <!-- Interactive Category Filter Tabs -->
+            <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1.5 px-2">
+              <button onclick="filterCategory('all')" id="tab-all" 
+                  class="category-tab active-tab bg-navy text-dark border border-navy px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition shadow-sm">
+                  All Items
+              </button>
+              <button onclick="filterCategory('grocery')" id="tab-grocery" 
+                  class="category-tab bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition">
+                   Grocery & Oils
+              </button>
+              <button onclick="filterCategory('household')" id="tab-household" 
+                  class="category-tab bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition">
+                  Household & Cleaners
+              </button>
+              <button onclick="filterCategory('womens')" id="tab-womens" 
+                  class="category-tab bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition">
+                  Women's Care
+              </button>
+              <button onclick="filterCategory('brands')" id="tab-brands" 
+                  class="category-tab bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition">
+                   Our Exclusive Brands
+              </button>
+              
+            </div>
+        </div>
 
-        if (currentCategory !== 'all') {
-            filtered = filtered.filter(p => p.category === currentCategory);
-        }
+        <!-- Sorting & Result Summary -->
+        <div class="flex items-center justify-between text-xs text-gray-500 my-4">
+            <span id="productCountText" class="m-2">Showing 10 Products</span>
+            <div class="flex items-center gap-2">
+                <label for="sortSelect" class="font-medium text-gray-600  m-4">Sort By:</label>
+                <select id="sortSelect" onchange="sortProducts()" class="bg-white border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-navy">
+                    <option value="default">Default</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="discount">Highest Discount</option>
+                </select>
+            </div>
+        </div>
 
-        if (currentSort === 'price-low') {
-            filtered.sort((a, b) => a.price - b.price);
-        } else if (currentSort === 'price-high') {
-            filtered.sort((a, b) => b.price - a.price);
-        } else if (currentSort === 'discount') {
-            filtered.sort((a, b) => {
-                const discA = a.oldPrice ? (a.oldPrice - a.price) / a.oldPrice : 0;
-                const discB = b.oldPrice ? (b.oldPrice - b.price) / b.oldPrice : 0;
-                return discB - discA;
-            });
-        }
+        <!-- PRODUCT GRID -->
+        <div id="gridContainer" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            <!-- Products will be dynamically rendered via JS -->
+        </div>
+    </section>
 
-        return filtered;
-    }
 
-    function renderProducts() {
-        const filtered = getFilteredProducts();
-        const container = document.getElementById('gridContainer');
-        
-        if (filtered.length === 0) {
-            container.innerHTML = `
-                <div class="col-span-full text-center py-16 text-gray-500">
-                    <p class="text-lg font-medium">No products found in this category</p>
-                    <button onclick="filterCategory('all')" class="mt-4 text-navy underline text-sm">View All Products</button>
-                </div>`;
-        } else {
-            container.innerHTML = filtered.map(p => renderProductCard(p)).join('');
-        }
-
-        document.getElementById('productCountText').textContent = 
-            `Showing ${filtered.length} Product${filtered.length !== 1 ? 's' : ''}`;
-    }
-
-    // ====================== EVENT HANDLERS ======================
-    function filterCategory(category) {
-        currentCategory = category;
-
-        // Reset all tabs to inactive style
-        document.querySelectorAll('.category-tab').forEach(tab => {
-            tab.classList.remove('active-tab', 'bg-navy', 'text-primary', 'shadow-sm');
-            tab.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-200');
-        });
-
-        // Activate the clicked tab
-        const activeTab = document.getElementById(`tab-${category}`);
-        if (activeTab) {
-            activeTab.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-200');
-            activeTab.classList.add('active-tab', 'bg-navy', 'text-primary', 'shadow-sm');
-        }
-
-        renderProducts();
-    }
-
-    function sortProducts() {
-        currentSort = document.getElementById('sortSelect').value;
-        renderProducts();
-    }
-
-    // Initial render
-    document.addEventListener('DOMContentLoaded', () => {
-        renderProducts();
-    });
-</script>
     </main>
     <!-- footer -->
     <footer
@@ -2245,7 +1923,7 @@
                       >Bakery Biscuits</a
                     >
                     <!-- heading -->
-                    <h1>Napolitanke Ljesnjak</h1>
+                    <h1 class="text-xl font-bold">Napolitanke Ljesnjak</h1>
                     <div class="flex flex-col gap-2">
                       <div class="flex items-center">
                         <!-- rating -->
@@ -2443,7 +2121,7 @@
 
                           <a
                             href="#"
-                            class="btn inline-flex items-center gap-x-2 px-0 h-10 w-10 justify-center bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            class="heartIcon btn inline-flex items-center gap-x-2 px-0 h-10 w-10 justify-center bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               class="icon icon-tabler icon-tabler-heart"
@@ -2706,5 +2384,369 @@
         });
       });
     </script>
+    <script>
+      // ====================== PRODUCT DATA ======================
+      const products = [
+          {
+              id: 1,
+              name: "Haldiram's Sev Bhujia",
+              category: "grocery",
+              brand: "Haldiram's",
+              image: "assets/images/products/product-img-1.jpg",
+              price: 18,
+              oldPrice: 24,
+              rating: 4.5,
+              reviews: 149,
+              badge: "Sale",
+              badgeColor: "bg-red-600"
+          },
+          {
+              id: 2,
+              name: "NutriChoice Digestive",
+              category: "grocery",
+              brand: "NutriChoice",
+              image: "assets/images/products/product-img-2.jpg",
+              price: 24,
+              oldPrice: null,
+              rating: 4.5,
+              reviews: 25,
+              badge: "14%",
+              badgeColor: "bg-gray-800"
+          },
+          {
+              id: 3,
+              name: "Cadbury 5 Star Chocolate",
+              category: "grocery",
+              brand: "Cadbury",
+              image: "assets/images/products/product-img-3.jpg",
+              price: 32,
+              oldPrice: 35,
+              rating: 5,
+              reviews: 469,
+              badge: null,
+              badgeColor: ""
+          },
+          {
+              id: 4,
+              name: "Onion Flavour Potato",
+              category: "grocery",
+              brand: "Lay's",
+              image: "assets/images/products/product-img-4.jpg",
+              price: 3,
+              oldPrice: 5,
+              rating: 3.5,
+              reviews: 456,
+              badge: "Hot",
+              badgeColor: "bg-red-600"
+          },
+          {
+              id: 5,
+              name: "Salted Instant Popcorn",
+              category: "grocery",
+              brand: "Act II",
+              image: "assets/images/products/product-img-5.jpg",
+              price: 13,
+              oldPrice: 18,
+              rating: 4.5,
+              reviews: 39,
+              badge: null,
+              badgeColor: ""
+          },
+          {
+              id: 6,
+              name: "Blueberry Greek Yogurt",
+              category: "grocery",
+              brand: "Epigamia",
+              image: "assets/images/products/product-img-6.jpg",
+              price: 18,
+              oldPrice: 24,
+              rating: 4.5,
+              reviews: 189,
+              badge: "Sale",
+              badgeColor: "bg-red-600"
+          },
+          {
+              id: 7,
+              name: "Britannia Cheese Slices",
+              category: "grocery",
+              brand: "Britannia",
+              image: "assets/images/products/product-img-7.jpg",
+              price: 24,
+              oldPrice: null,
+              rating: 5,
+              reviews: 345,
+              badge: null,
+              badgeColor: ""
+          },
+          {
+              id: 8,
+              name: "Kellogg's Original Cereals",
+              category: "grocery",
+              brand: "Kellogg's",
+              image: "assets/images/products/product-img-8.jpg",
+              price: 32,
+              oldPrice: 35,
+              rating: 4,
+              reviews: 90,
+              badge: null,
+              badgeColor: ""
+          },
+          {
+              id: 9,
+              name: "Slurrp Millet Chocolate",
+              category: "brands",
+              brand: "Slurrp",
+              image: "assets/images/products/product-img-9.jpg",
+              price: 3,
+              oldPrice: 5,
+              rating: 4.5,
+              reviews: 90,
+              badge: null,
+              badgeColor: ""
+          },
+          {
+              id: 10,
+              name: "Amul Butter - 500 g",
+              category: "grocery",
+              brand: "Amul",
+              image: "assets/images/products/product-img-10.jpg",
+              price: 13,
+              oldPrice: 18,
+              rating: 4.5,
+              reviews: 90,
+              badge: null,
+              badgeColor: ""
+          },
+           {
+              id: 11,
+              name: "household one",
+              category: "household",
+              brand: "Slurrp",
+              image: "assets/images/products/product-img-11.jpg",
+              price: 30,
+              oldPrice: 5,
+              rating: 4.5,
+              reviews: 90,
+              badge: null,
+              badgeColor: ""
+          },
+           {
+              id: 12,
+              name: "household two",
+              category: "household",
+              brand: "Slurrp",
+              image: "assets/images/products/product-img-12.jpg",
+              price:70,
+              oldPrice: 5,
+              rating: 4.5,
+              reviews: 90,
+              badge: null,
+              badgeColor: ""
+          },
+            {
+              id: 13,
+              name: "womens one",
+              category: "womens",
+              brand: "Slurrp",
+              image: "assets/images/products/product-img-13.jpg",
+              price:70,
+              oldPrice: 5,
+              rating: 4.5,
+              reviews: 90,
+              badge: null,
+              badgeColor: ""
+          },
+
+      ];
+
+      // Current state
+      let currentCategory = 'all';
+      let currentSort = 'default';
+
+      // ====================== RENDER STARS ======================
+      function renderStars(rating) {
+          let stars = '';
+          const fullStars = Math.floor(rating);
+          const hasHalf = rating % 1 !== 0;
+
+          for (let i = 0; i < fullStars; i++) {
+              stars += `
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star-filled" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" stroke-width="0" fill="currentColor" />
+                  </svg>`;
+          }
+
+          if (hasHalf) {
+              stars += `
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star-half-filled" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 1a.993 .993 0 0 1 .823 .443l.067 .116l2.852 5.781l6.38 .925c.741 .108 1.08 .94 .703 1.526l-.07 .095l-.078 .086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1 -1.249 1.135l-.101-.035l-.101-.046l-5.693 -3l-5.706 3c-.105 .055 -.212 .09 -.32 .106l-.106 .01a1.003 1.003 0 0 1 -1.038 -1.06l.013 -.11l1.09 -6.355l-4.623 -4.5a1.001 1.001 0 0 1 .328 -1.647l.113 -.036l.114 -.023l6.379 -.925l2.853 -5.78a.968 .968 0 0 1 .904 -.56zm0 3.274v12.476a1 1 0 0 1 .239 .029l.115 .036l.112 .05l4.363 2.299l-.836 -4.873a1 1 0 0 1 .136 -.696l.07 -.099l.082 -.09l3.546 -3.453l-4.891 -.708a1 1 0 0 1 -.62 -.344l-.073 -.097l-.06 -.106l-2.183 -4.424z" stroke-width="0" fill="currentColor" />
+                  </svg>`;
+          }
+
+          const emptyStars = 5 - Math.ceil(rating);
+          for (let i = 0; i < emptyStars; i++) {
+              stars += `
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="14" height="14" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                  </svg>`;
+          }
+
+          return stars;
+      }
+
+      // ====================== RENDER PRODUCT CARD ======================
+      function renderProductCard(product) {
+          return `
+          <div class="relative rounded-lg break-words border bg-white border-gray-300 card-product">
+              <div class="flex-auto p-4">
+                  <div class="text-center relative flex justify-center">
+                      ${product.badge ? `
+                          <div class="absolute top-0 left-0 z-10">
+                              <span class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded ${product.badgeColor} text-white">
+                                  ${product.badge}
+                              </span>
+                          </div>` : ''}
+                      
+                      <a href="product_details.html">
+                          <img src="${product.image}" alt="${product.name}" class="w-full h-auto" />
+                      </a>
+
+                      <div class="absolute w-full bottom-[15%] opacity-0 invisible card-product-action">
+                          <a href="#!" class="h-[34px] w-[34px] leading-[34px] bg-white shadow inline-flex items-center justify-center rounded-lg hover:bg-gray-800 hover:text-white" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View">
+                              <span data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                      <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+                                  </svg>
+                              </span>
+                          </a>
+                          <a href="#!" class="h-[34px] w-[34px] leading-[34px] bg-white shadow inline-flex items-center justify-center rounded-lg hover:bg-gray-800 hover:text-white" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                  <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                          </a>
+                      </div>
+                  </div>
+
+                  <div class="flex flex-col gap-3">
+                      <a href="#!" class="text-decoration-none text-gray-500">
+                          <small>${product.brand}</small>
+                      </a>
+                      
+                      <div class="flex flex-col gap-2">
+                          <h3 class="text-base truncate">
+                              <a href="#!">${product.name}</a>
+                          </h3>
+                          
+                          <div class="flex items-center">
+                              <div class="flex flex-row gap-3">
+                                  <small class="text-yellow-500 flex items-center">
+                                      ${renderStars(product.rating)}
+                                  </small>
+                                  <div class="flex flex-row gap-1">
+                                      <span class="text-gray-500 text-sm">${product.rating}</span>
+                                      <span class="text-gray-500 text-sm">(${product.reviews})</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="flex justify-between items-center">
+                          <div>
+                              <span class="text-gray-900 font-semibold">$${product.price}</span>
+                              ${product.oldPrice ? `<span class="line-through text-gray-500">$${product.oldPrice}</span>` : ''}
+                          </div>
+                          <div>
+                              <button type="button" class="btn inline-flex items-center gap-x-1 bg-gray-800 text-white border-blue-600 disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-green-700 hover:border-green-700 active:bg-green-700 active:border-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 btn-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="14" height="14" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                      <path d="M12 5l0 14" />
+                                      <path d="M5 12l14 0" />
+                                  </svg>
+                                  <span>Add</span>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>`;
+      }
+
+      // ====================== FILTER + SORT + RENDER ======================
+      function getFilteredProducts() {
+          let filtered = [...products];
+
+          if (currentCategory !== 'all') {
+              filtered = filtered.filter(p => p.category === currentCategory);
+          }
+
+          if (currentSort === 'price-low') {
+              filtered.sort((a, b) => a.price - b.price);
+          } else if (currentSort === 'price-high') {
+              filtered.sort((a, b) => b.price - a.price);
+          } else if (currentSort === 'discount') {
+              filtered.sort((a, b) => {
+                  const discA = a.oldPrice ? (a.oldPrice - a.price) / a.oldPrice : 0;
+                  const discB = b.oldPrice ? (b.oldPrice - b.price) / b.oldPrice : 0;
+                  return discB - discA;
+              });
+          }
+
+          return filtered;
+      }
+
+      function renderProducts() {
+          const filtered = getFilteredProducts();
+          const container = document.getElementById('gridContainer');
+          
+          if (filtered.length === 0) {
+              container.innerHTML = `
+                  <div class="col-span-full text-center py-16 text-gray-500 justify-content-center items-center flex flex-col gap-2">
+                      <p class="text-lg font-medium">No products found in this category</p>
+                      <button onclick="filterCategory('all')" class="mt-4 text-navy underline text-sm">View All Products</button>
+                  </div>`;
+          } else {
+              container.innerHTML = filtered.map(p => renderProductCard(p)).join('');
+          }
+
+          document.getElementById('productCountText').textContent = 
+              `Showing ${filtered.length} Product${filtered.length !== 1 ? 's' : ''}`;
+      }
+
+      // ====================== EVENT HANDLERS ======================
+      function filterCategory(category) {
+          currentCategory = category;
+
+          // Reset all tabs to inactive style
+          document.querySelectorAll('.category-tab').forEach(tab => {
+              tab.classList.remove('active-tab', 'bg-navy', 'text-dark', 'text-primary', 'shadow-sm', 'border-navy');
+              tab.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-200');
+          });
+
+          // Activate the clicked tab with visible border
+          const activeTab = document.getElementById(`tab-${category}`);
+          if (activeTab) {
+              activeTab.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-200');
+              activeTab.classList.add('active-tab', 'bg-navy', 'text-dark', 'border', 'border-navy', 'shadow-sm');
+          }
+
+          renderProducts();
+      }
+
+      function sortProducts() {
+          currentSort = document.getElementById('sortSelect').value;
+          renderProducts();
+      }
+
+      // Initial render
+      document.addEventListener('DOMContentLoaded', () => {
+          renderProducts();
+      });
+</script>
   </body>
 </html>

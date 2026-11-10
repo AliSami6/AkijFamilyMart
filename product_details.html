@@ -83,7 +83,7 @@
             </div>
           </div>
         </div>
-        <div class="pt-5">
+        <div class="pt-3">
           <div class="container">
             <div class="flex flex-wrap w-full items-center justify-between">
               <div class="lg:w-1/6 md:w-1/2 w-2/5">
@@ -108,8 +108,8 @@
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="icon icon-tabler icon-tabler-search"
-                        width="16"
-                        height="16"
+                        width="20"
+                        height="20"
                         viewBox="0 0 24 24"
                         stroke-width="2"
                         stroke="currentColor"
@@ -136,8 +136,8 @@
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="icon icon-tabler icon-tabler-map-pin"
-                        width="16"
-                        height="16"
+                        width="20"
+                        height="20"
                         viewBox="0 0 24 24"
                         stroke-width="2"
                         stroke="currentColor"
@@ -315,9 +315,9 @@
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           class="icon icon-tabler icon-tabler-search"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 26 26"
                           stroke-width="2"
                           stroke="currentColor"
                           fill="none"
@@ -1255,94 +1255,60 @@
             <div class="flex flex-wrap">
               <div class="md:w-1/2">
                 <!-- img slide -->
-                <div class="product productModal" id="productModal">
+                <div class="product productModal" id="product">
                   <div
                     class="zoom"
                     onmousemove="zoom(event)"
-                    style="
-                      background-image: url(./assets/images/products/product-single-img-1.jpg);
-                    ">
-                    <!-- img -->
-                    <!-- img -->
-                    <img
-                      src="./assets/images/products/product-single-img-1.jpg"
-                      alt="" />
+                    style="background-image: url(./assets/images/products/product-single-img-1.jpg);">
+                    <img src="./assets/images/products/product-single-img-1.jpg" alt="" />
                   </div>
                   <div>
                     <div
                       class="zoom"
                       onmousemove="zoom(event)"
-                      style="
-                        background-image: url(./assets/images/products/product-single-img-2.jpg);
-                      ">
-                      <!-- img -->
-                      <img
-                        src="./assets/images/products/product-single-img-2.jpg"
-                        alt="" />
+                      style="background-image: url(./assets/images/products/product-single-img-2.jpg);">
+                      <img src="./assets/images/products/product-single-img-2.jpg" alt="" />
                     </div>
                   </div>
                   <div>
                     <div
                       class="zoom"
                       onmousemove="zoom(event)"
-                      style="
-                        background-image: url(./assets/images/products/product-single-img-3.jpg);
-                      ">
-                      <!-- img -->
-                      <img
-                        src="./assets/images/products/product-single-img-3.jpg"
-                        alt="" />
+                      style="background-image: url(./assets/images/products/product-single-img-3.jpg);">
+                      <img src="./assets/images/products/product-single-img-3.jpg" alt="" />
                     </div>
                   </div>
                   <div>
                     <div
                       class="zoom"
                       onmousemove="zoom(event)"
-                      style="
-                        background-image: url(./assets/images/products/product-single-img-4.jpg);
-                      ">
-                      <!-- img -->
-                      <img
-                        src="./assets/images/products/product-single-img-4.jpg"
-                        alt="" />
+                      style="background-image: url(./assets/images/products/product-single-img-4.jpg);">
+                      <img src="./assets/images/products/product-single-img-4.jpg" alt="" />
                     </div>
                   </div>
                 </div>
+
                 <!-- product tools -->
                 <div class="product-tools">
-                  <div
-                    class="thumbnails flex gap-3"
-                    id="productModalThumbnails">
+                  <div class="thumbnails flex gap-3" id="productThumbnails">
                     <div class="w-1/4">
                       <div class="thumbnails-img">
-                        <!-- img -->
-                        <img
-                          src="./assets/images/products/product-single-img-1.jpg"
-                          alt="" />
+                        <img src="./assets/images/products/product-single-img-1.jpg" alt="" />
                       </div>
                     </div>
                     <div class="w-1/4">
                       <div class="thumbnails-img">
-                        <!-- img -->
-                        <img
-                          src="./assets/images/products/product-single-img-2.jpg"
-                          alt="" />
+                        <img src="./assets/images/products/product-single-img-2.jpg" alt="" />
                       </div>
                     </div>
                     <div class="w-1/4">
                       <div class="thumbnails-img">
-                        <!-- img -->
-                        <img
-                          src="./assets/images/products/product-single-img-3.jpg"
-                          alt="" />
+                        <img src="./assets/images/products/product-single-img-3.jpg" alt="" />
                       </div>
                     </div>
                     <div class="w-1/4">
                       <div class="thumbnails-img">
-                        <!-- img -->
-                        <img
-                          src="./assets/images/products/product-single-img-4.jpg"
-                          alt="" />
+                        <img src="./assets/images/products/product-single-img-4.jpg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -1356,7 +1322,7 @@
                       >Bakery Biscuits</a
                     >
                     <!-- heading -->
-                    <h1>Napolitanke Ljesnjak</h1>
+                    <h1 class="text-xl font-bold text-gray-800">Napolitanke Ljesnjak</h1>
                     <div class="flex flex-col gap-2">
                       <div class="flex items-center">
                         <!-- rating -->
@@ -1475,47 +1441,52 @@
                     <!-- hr -->
                     <div class="flex flex-col gap-6">
                       <hr />
-                      <div class="mb-4">
+                      <div class="mb-2">
                         <span class="font-bold text-gray-700 dark:text-gray-300"
-                          >Select Color:</span
+                          > Color:</span
                         >
-                        <div class="flex items-center mt-2">
+                        <div>
                           <button
-                            class="w-6 h-6 rounded-full bg-gray-800 dark:bg-gray-200 mr-2">
+                            type="button"
+                            class="btn inline-flex items-center gap-x-2 bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
                             Red
                           </button>
+                      
                           <button
-                            class="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2">
+                            type="button"
+                            class="btn inline-flex items-center gap-x-2 bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
                             Blue
                           </button>
+                      
                           <button
-                            class="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2">
-                            White
-                          </button>
-                          <button
-                            class="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2">
-                            Black
+                            type="button"
+                            class="btn inline-flex items-center gap-x-2 bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            Green
                           </button>
                         </div>
                       </div>
-                      <div>
-                        <button
-                          type="button"
-                          class="btn inline-flex items-center gap-x-2 bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
-                          250g
-                        </button>
-                        <!-- btn -->
-                        <button
-                          type="button"
-                          class="btn inline-flex items-center gap-x-2 bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
-                          500g
-                        </button>
-                        <!-- btn -->
-                        <button
-                          type="button"
-                          class="btn inline-flex items-center gap-x-2 bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
-                          1kg
-                        </button>
+                      <div class="mb-2">
+                        <span class="font-bold text-gray-700 dark:text-gray-300"
+                          > Size:</span>
+                        <div>
+                          <button
+                            type="button"
+                            class="btn inline-flex items-center gap-x-2 bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            250g
+                          </button>
+                          <!-- btn -->
+                          <button
+                            type="button"
+                            class="btn inline-flex items-center gap-x-2 bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            500g
+                          </button>
+                          <!-- btn -->
+                          <button
+                            type="button"
+                            class="btn inline-flex items-center gap-x-2 bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            1kg
+                          </button>
+                        </div>
                       </div>
                       <div>
                         <!-- input -->
@@ -1580,7 +1551,7 @@
                             class="btn inline-flex items-center gap-x-2 px-0 h-10 w-10 justify-center bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              class="icon icon-tabler icon-tabler-heart"
+                              class="icon icon-tabler icon-tabler-heart heartIcon"
                               width="20"
                               height="20"
                               viewBox="0 0 24 24"
@@ -4836,7 +4807,7 @@
                       >Bakery Biscuits</a
                     >
                     <!-- heading -->
-                    <h1>Napolitanke Ljesnjak</h1>
+                    <h1 class="text-xl font-bold text-gray-800">Napolitanke Ljesnjak</h1>
                     <div class="flex flex-col gap-2">
                       <div class="flex items-center">
                         <!-- rating -->
@@ -5037,7 +5008,7 @@
                             class="btn inline-flex items-center gap-x-2 px-0 h-10 w-10 justify-center bg-white text-gray-800 border-gray-300 border disabled:opacity-50 disabled:pointer-events-none hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              class="icon icon-tabler icon-tabler-heart"
+                              class="icon icon-tabler icon-tabler-heart heartIcon"
                               width="20"
                               height="20"
                               viewBox="0 0 24 24"
