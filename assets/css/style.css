@@ -10,6 +10,7 @@
   --akij-green: #FF4DA6;             /* Kept for success / authorized */
   --akij-light: #FFF5F9;             /* Very soft pink tint instead of cool gray */
   --akij-white: #ffffff;
+  --slider-bg:#f079b5;
 
   /* Main Brand Color from Logo */
   --galleria-brand: #E6007E;         /* Primary Galleria Pink */
@@ -50,7 +51,9 @@ header {
   z-index: 1000;
   box-shadow: 0 3px 18px rgba(10, 31, 68, 0.07);
 }
-
+.bg-amber-500{
+  background-color:var(--slider-bg);
+}
 /* Top Announcement Bar */
 header > div > div:first-child {
   background: var(--akij-navy) !important;
@@ -382,4 +385,18 @@ header nav .dropdown > button:hover {
 .animate-custom-bounce {
   animation: customBounce 1s infinite;
 }
+@keyframes smoothBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
 
+.animate-smooth-bounce {
+  animation: smoothBounce 2s infinite ease-in-out;
+}
+.whatsappImage{
+  width:60px !important;
+}
