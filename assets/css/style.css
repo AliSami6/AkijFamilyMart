@@ -826,3 +826,8 @@ header nav .dropdown > button:hover {
   background-color: #FFFFFF;
   color: #111111;
 }
+@media (max-width: 991px) {
+    ul.navbar-nav.lg\:flex .nav-item .nav-link {
+        color: #000 !important;
+    }
+}
